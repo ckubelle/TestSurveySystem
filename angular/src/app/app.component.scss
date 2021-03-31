@@ -1,0 +1,28 @@
+mat-toolbar {
+  position: fixed;
+}
+
+.wrapper {
+  height: 100%;
+
+  .header {
+    width: 100%;
+    
+    .info {
+      margin-left: 1rem;
+
+      .display-name {
+        margin-bottom: 0;
+      }
+    }
+
+    img {
+      height: 4rem;
+      border-radius: 50%;
+    }
+  }
+
+  mat-divider {
+    margin: 1rem 0;
+  }
+}

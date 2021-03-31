@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <h1>Todo List</h1>
+</mat-toolbar>
+
+<div class="wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <div *ngIf="auth.user$ | async as user; else signIn" fxLayout="column" fxFlex="50">
+
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <img [src]="user.photoURL">
+        <div class="info">
+          <h2 class="display-name">{{user.displayName}}</h2>
+          <p>{{user.email}}</p>
+        </div>
+      </div>
+      <button mat-raised-button (click)="auth.signOut()">Sign Out</button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+
+    <app-todo [user]="user"></app-todo>
+
+    <!-- <pre>{{user | json}}</pre> -->
+  </div>
+
+  <ng-template #signIn>
+    <div fxLayout="column">
+      <button mat-raised-button (click)="auth.googleSignin()">Sign In with Google</button>
+    </div>
+  </ng-template>
+
+  <!-- <router-outlet></router-outlet> -->
+
+</div>

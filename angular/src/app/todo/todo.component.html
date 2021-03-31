@@ -1,0 +1,26 @@
+<div class="content">
+    <mat-selection-list #items>
+        <mat-list-option *ngFor="let item of items$ | async" [value]="item.id">
+            {{item.name}}
+        </mat-list-option>
+    </mat-selection-list>
+    <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="new-item">
+            <mat-form-field>
+                <mat-label>New item</mat-label>
+                <input matInput #input>
+            </mat-form-field>
+            <button 
+                mat-raised-button 
+                (click)="addItem(input.value)">
+                Add
+            </button>
+        </div>
+        <button 
+            mat-raised-button 
+            *ngIf="items.selectedOptions.selected.length > 0"
+            (click)="removeItems(items.selectedOptions.selected)">
+            Complete Selected
+        </button>
+    </div>
+</div>
