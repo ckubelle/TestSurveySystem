@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ssw-322"
+  },
+  "targets": {
+    "surveycreator-859ac": {
+      "hosting": {
+        "angular": [
+          "surveycreator-859ac"
+        ]
+      }
+    }
   }
 }
