@@ -1,7 +1,3 @@
-<mat-toolbar>
-  <h1>Todo List</h1>
-</mat-toolbar>
-
 <div class="wrapper" fxLayout="row" fxLayoutAlign="center center">
 
   <div *ngIf="auth.user$ | async as user; else signIn" fxLayout="column" fxFlex="50">
@@ -26,7 +22,9 @@
   </div>
 
   <ng-template #signIn>
-    <div fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="space-between center">
+      <h1 id="title">Welcome to Test/Survey System</h1>
+      <img id="title_image" src="assets/titleundraw.png">
       <button mat-raised-button (click)="auth.googleSignin()">Sign In with Google</button>
     </div>
   </ng-template>
