@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { GradeComponent } from './grade/grade.component';
 import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TakeComponent } from './take/take.component';
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path : 'create/:id', component: CreateComponent},
   {path : 'take/:id', component: TakeComponent},
   {path : 'edit/:id', component: EditComponent},
-  {path : 'grade/:id', component: EditComponent},
+  {path : 'grade/:id', component: GradeComponent},
   {path : '**', component: NotfoundComponent}];
 
 @NgModule({

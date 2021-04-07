@@ -1,6 +1,7 @@
-<div *ngIf="auth.user$ | async as user; else signIn" fxLayout="column" fxFlex="50">
+<div *ngIf="auth.user$ | async as user; else signIn" fxLayout="column" fxLayoutAlign="space-evenly center"  >
 
-  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
       <div fxLayout="row" fxLayoutAlign="start center">
         <img [src]="user.photoURL">
         <div class="info">
@@ -9,21 +10,21 @@
         </div>
       </div>
       <button mat-raised-button (click)="auth.signOut()">Sign Out</button>
-  </div>
+    </div>
 
   <mat-divider></mat-divider>
 
-  <!-- <pre>{{user | json}}</pre> -->
-  <nav>
-      <ul>
-        <li><a routerLink="/todo/{{user.uid}}">Todo Component</a></li>
-        <li><a routerLink="/create/{{user.uid}}">Create Test/Survey</a></li>
-        <li><a routerLink="/edit/{{user.uid}}">Edit Test/Survey</a></li>
-        <li><a routerLink="/grade/{{user.uid}}">Grade Test/Survey</a></li>
-      </ul>
-  </nav>
-   
+    <div fxLayout= "column" fxLayoutGap="15px">
+    <button routerLink="/todo/{{user.uid}}" mat-raised-button> ToDo Example</button>
+    <button routerLink="/create/{{user.uid}}" mat-raised-button> Create: Test/Survey</button>
+    <button routerLink="/take/{{user.uid}}" mat-raised-button> Take: Test/Survey</button>
+    <button routerLink="/edit/{{user.uid}}" mat-raised-button> Edit: Test/Survey</button>
+    <button routerLink="/grade/{{user.uid}}" mat-raised-button> Grade and View Results</button>
+    </div>
 </div>
+
+
+
 <ng-template #signIn>
   <div fxLayout="column" fxLayoutAlign="space-between center">
     <h1 id="title">Welcome to Test/Survey System</h1>
