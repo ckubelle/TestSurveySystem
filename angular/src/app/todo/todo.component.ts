@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatListOption } from '@angular/material/list';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from '../services/auth.service';
+
 
 export interface Todo {
   id?: string;
@@ -17,22 +18,28 @@ export interface Todo {
 })
 export class TodoComponent implements OnInit {
   items$: Observable<Todo[]>;
+  id: string;
 
-  @Input() user: User;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(
+    private afs: AngularFirestore, 
+    private route: ActivatedRoute
+    ) {this.route.params.subscribe(params=>{
+      this.id = params.id;
+    })}
+
 
   ngOnInit(): void {
     this.items$ = this.afs
       .collection<Todo>('todos', (ref) =>
-        ref.where('userId', '==', this.user?.uid)
+        ref.where('userId', '==', this.id)
       )
       .valueChanges({ idField: 'id' });
   }
 
   addItem(name: string): void {
     if (name) {
-      const userId = this.user.uid;
+      const userId = this.id;
       this.afs.collection<Todo>('todos').add({ userId, name });
     }
   }

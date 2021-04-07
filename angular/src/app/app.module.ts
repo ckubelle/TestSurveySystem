@@ -16,10 +16,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
+import { HomeComponent } from './home/home.component';
+import { CreateComponent } from './create/create.component';
+import { TakeComponent } from './take/take.component';
+import { EditComponent } from './edit/edit.component';
+import { GradeComponent } from './grade/grade.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 @NgModule({
-  declarations: [AppComponent, TodoComponent],
+  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
