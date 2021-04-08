@@ -15,7 +15,6 @@ export class CreateComponent implements OnInit {
     ) {this.route.params.subscribe(params=>{
       this.id = params.id;
     })}
-
   ngOnInit(): void {
   }
 

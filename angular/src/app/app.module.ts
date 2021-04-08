@@ -22,10 +22,11 @@ import { TakeComponent } from './take/take.component';
 import { EditComponent } from './edit/edit.component';
 import { GradeComponent } from './grade/grade.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { QuestionComponent } from './question/question.component';
 
 
 @NgModule({
-  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent],
+  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent, QuestionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
