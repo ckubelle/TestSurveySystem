@@ -3,11 +3,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatListOption } from '@angular/material/list';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import {MatSelectModule} from '@angular/material/select';
 
 export interface Question {
   id?: string;
   userId: string;
   name: string;
+  
 }
 
 @Component({
@@ -39,9 +41,10 @@ export class QuestionComponent implements OnInit {
   addItem(name: string): void {
     if (name) {
       const userId = this.id;
-      this.afs.collection<Question>('question').add({ userId, name });
+      this.afs.collection<Question>('question').add({ userId, name});
     }
   }
+  
 
   removeItems(selected: MatListOption[]): void {
     for (const item of selected) {

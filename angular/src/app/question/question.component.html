@@ -8,11 +8,33 @@
         <div class="new-item">
             <mat-form-field>
                 <mat-label>New question</mat-label>
-                <input matInput #input>
+                <input matInput #question required>
             </mat-form-field>
+             <mat-form-field>
+                <mat-label>Answer</mat-label>
+                <input matInput #answer required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Question Type</mat-label>
+                <select matNativeControl required>
+                <mat-label>Question Type</mat-label>
+                    <option #type value="mc">Multiple Choice</option>
+                    <option #type value="tf">True/False</option>
+                    <option #type value="sa">Short Answer</option>
+                    <option #type value="ea">Essay Answer</option>
+                    <option #type value="ma">Matching</option>
+                    <option #type value="ra">Ranking</option>
+                    <option #type value="mmc">Multiple Multiple Choice</option>
+                    <option #type value="fi">Fill In</option>
+                </select>
+            </mat-form-field>
+            
+            
             <button 
                 mat-raised-button 
-                (click)="addItem(input.value)">
+                (click)="addItem(question.value)"
+                (click)="addItem(answer.value)"
+                (click)="addItem(type.value)">
                 Add
             </button>
         </div>
