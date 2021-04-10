@@ -68,9 +68,6 @@ export class QuestionComponent implements OnInit {
       this.ra = false;
       this.ma = false;
       console.log("mc chosen");
-      this.htmlstring = `
-      <input matInput placeholder="Answer 1" formControlName="a1">
-  `
         }
     else if (this.answerType.value == "sa") {
         this.sa = true;
