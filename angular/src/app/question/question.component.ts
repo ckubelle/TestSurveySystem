@@ -16,7 +16,6 @@ import { MatFormField, MAT_FORM_FIELD } from '@angular/material/form-field';
 export class QuestionComponent implements OnInit {
   id: string;
   myForm : FormGroup;
-  htmlstring: string;
 
   constructor(
     private afs: AngularFirestore, 
@@ -29,24 +28,24 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      email: ['', [
+      questionTitle: ['', [
         Validators.required,
       ]],
-      phones: this.fb.array([])
+      questions: this.fb.array([])
     });
   }
 
-  get phoneForms(){
-    return this.myForm.get('phones') as FormArray
+  get questionForms(){
+    return this.myForm.get('questions') as FormArray
   }
 
-  get email(){
-      return this.myForm.get('email');
+  get questionTitle(){
+      return this.myForm.get('questionTitle');
   }
 
 
   answerType: { value: string;  } = {
-    value: "GB",
+    value: "null",
   };
   
   mc;
@@ -134,22 +133,26 @@ export class QuestionComponent implements OnInit {
   }
 
 
-  addPhone(){
+  addQuestion(){
 
-    const phone = this.fb.group({
-        area: [], 
+    console.log(this.myForm);
+
+    const question = this.fb.group({
+        questionTitle: [], 
+        questionAnswer: [],
+        questionType: [],
         prefix: [],
         line: [],
     })
 
-    this.phoneForms.push(phone);
+    this.questionForms.push(question);
 
   }
   
 
 
-  deletePhone(i){
-    this.phoneForms.removeAt(i);
+  deleteQuestion(question){
+    this.questionForms.removeAt(question);
    
   }
 

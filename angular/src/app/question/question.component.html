@@ -1,17 +1,17 @@
 <form [formGroup]="myForm" fxLayout= "column" fxLayoutAlign="center">
 
     <mat-form-field>
-        <input matInput placeholder="Enter Test/Survey Name" formControlName="email">
+        <input matInput placeholder="Enter Test/Survey Name" formControlName="questionTitle">
 
-        <mat-error *ngIf="email.pristine">
+        <mat-error *ngIf="questionTitle.pristine">
             Please Enter a Test/Survey Name
         </mat-error>
 
     </mat-form-field>
 
-    <div formArrayName="phones">
+    <div formArrayName="questions">
 
-        <div *ngFor ="let phone of phoneForms.controls; let i=index" [formGroupName]="i" fxLayout="column" fxLayoutAlign="space-around center">
+        <div *ngFor ="let question of questionForms.controls; let i=index" [formGroupName]="i" fxLayout="column" fxLayoutAlign="space-around center">
 
             <mat-card>
                 <div fxLayout="column" fxLayoutAlign="space-between start">
@@ -20,13 +20,13 @@
                     </mat-card-content>
                     
                     <mat-form-field>
-                        <input matInput placeholder="Question" formControlName="question">
+                        <input matInput placeholder="Question" formControlName="questionTitle">
                     </mat-form-field>
         
         
                     <mat-form-field>
                         <mat-label> Question Type </mat-label>
-                        <mat-select value="questionType" (selectionChange)= "selectqType($event)" value="answerType"> 
+                        <mat-select (selectionChange)= "selectqType($event)" value="answerType"  formControlName="questionType"> 
                             <mat-option value = "sa">Short Answer</mat-option>
                             <mat-option value = "mc">Multiple Choice</mat-option>
                             <mat-option value = "ea">Essay Answer</mat-option>
@@ -37,7 +37,7 @@
                         </mat-select>
                     </mat-form-field>
 
-                        <div *ngIf= "mc">
+                        <div *ngIf= "mc" >
                             <mat-form-field>
                                 <input matInput placeholder="Multiple Choice Option 1">
                             </mat-form-field>
@@ -52,45 +52,45 @@
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "sa">
+                        <div *ngIf= "sa" >
                             <mat-form-field>
-                                <input matInput placeholder="Short Answer">
+                                <input matInput placeholder="Short Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "ea">
+                        <div *ngIf= "ea" >
                             <mat-form-field>
-                                <input matInput placeholder="Essay Answer">
+                                <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "mmc">
+                        <div *ngIf= "mmc" >
                             <mat-form-field>
-                                <input matInput placeholder="Multiple multiple choice Answer">
+                                <input matInput placeholder="Multiple multiple choice Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "tf">
+                        <div *ngIf= "tf" >
                             <mat-form-field>
-                                <input matInput placeholder="True/false Answer">
+                                <input matInput placeholder="True/false Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "ra">
+                        <div *ngIf= "ra" >
                             <mat-form-field>
-                                <input matInput placeholder="Ranking Answer">
+                                <input matInput placeholder="Ranking Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "ma">
+                        <div *ngIf= "ma" >
                             <mat-form-field>
-                                <input matInput placeholder="Matching Answer">
+                                <input matInput placeholder="Matching Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
                         
 
-                    <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete</button>
+                    <button mat-raised-button color=warn (click)="deleteQuestion(i)">Delete</button>
             
     
                 </div>
@@ -103,7 +103,7 @@
     </div>
 
     <br>
-    <button mat-raised-button (click)="addPhone()">Add Question</button>
+    <button mat-raised-button (click)="addQuestion()">Add Question</button>
 
     <br>
     <button mat-raised-button [disabled]="myForm.invalid" color=primary>Submit</button>
