@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" fxLayout= "column" fxLayoutAlign="center" id="padding">
+<form [formGroup]="myForm" [hidden] = "success" (ngSubmit)="submitHandler()" fxLayout= "column" fxLayoutAlign="center" id="padding">
 
     <mat-form-field>
         <input matInput placeholder="Enter Test/Survey Name" formControlName="questionTitle">
@@ -111,3 +111,8 @@
     <button mat-raised-button [disabled]="myForm.invalid" color=primary>Submit</button>
 
 </form>
+
+
+<div *ngIf="success">
+    yay! submitted
+</div>  
