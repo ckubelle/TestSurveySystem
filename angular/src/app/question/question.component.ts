@@ -1,14 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import { MatListOption } from '@angular/material/list';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-export interface Question {
-  id?: string;
-  userId: string;
-  name: string;
-}
+
 
 @Component({
   selector: 'app-question',
@@ -16,37 +13,51 @@ export interface Question {
   styleUrls: ['./question.component.scss']
 })
 export class QuestionComponent implements OnInit {
-  items$: Observable<Question[]>;
   id: string;
+  myForm : FormGroup;
 
 
   constructor(
     private afs: AngularFirestore, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
     ) {this.route.params.subscribe(params=>{
       this.id = params.id;
     })}
 
 
   ngOnInit(): void {
-    this.items$ = this.afs
-      .collection<Question>('question', (ref) =>
-        ref.where('userId', '==', this.id)
-      )
-      .valueChanges({ idField: 'id' });
+    this.myForm = this.fb.group({
+      email: ['', [
+        Validators.required,
+      ]],
+      phones: this.fb.array([])
+    });
   }
 
-  addItem(name: string): void {
-    if (name) {
-      const userId = this.id;
-      this.afs.collection<Question>('question').add({ userId, name });
-    }
+  get phoneForms(){
+    return this.myForm.get('phones') as FormArray
   }
 
-  removeItems(selected: MatListOption[]): void {
-    for (const item of selected) {
-      this.afs.doc<Question>(`question/${item.value}`).delete();
-    }
+  get email(){
+      return this.myForm.get('email');
+  }
+
+  addPhone(){
+
+    const phone = this.fb.group({
+        area: [], 
+        prefix: [],
+        line: [],
+    })
+
+    this.phoneForms.push(phone);
+
+  }
+
+
+  deletePhone(i){
+    this.phoneForms.removeAt(i);
   }
 
 }

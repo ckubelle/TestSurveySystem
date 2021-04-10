@@ -9,17 +9,17 @@
           <p>{{user.email}}</p>
         </div>
       </div>
-      <button mat-raised-button (click)="auth.signOut()">Sign Out</button>
+      <button mat-raised-button (click)="auth.signOut()" color="blue">Sign Out</button>
     </div>
 
   <mat-divider></mat-divider>
 
     <div fxLayout= "column" fxLayoutGap="15px">
-    <button routerLink="/todo/{{user.uid}}" mat-raised-button color = "green"> ToDo Example</button>
-    <button routerLink="/create/{{user.uid}}" mat-raised-button color = "green"> Create: Test/Survey</button>
-    <button routerLink="/take/{{user.uid}}" mat-raised-button color = "green"> Take: Test/Survey</button>
-    <button routerLink="/edit/{{user.uid}}" mat-raised-button color = "green"> Edit: Test/Survey</button>
-    <button routerLink="/grade/{{user.uid}}" mat-raised-button color = "green"> Grade and View Results</button>
+    <button routerLink="/todo/{{user.uid}}" mat-raised-button color = "blue"> ToDo Example</button>
+    <button routerLink="/create/{{user.uid}}" mat-raised-button color = "blue"> Create: Test/Survey</button>
+    <button routerLink="/take/{{user.uid}}" mat-raised-button color = "blue"> Take: Test/Survey</button>
+    <button routerLink="/edit/{{user.uid}}" mat-raised-button color = "blue"> Edit: Test/Survey</button>
+    <button routerLink="/grade/{{user.uid}}" mat-raised-button color = "blue"> Grade and View Results</button>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
   <div fxLayout="column" fxLayoutAlign="space-between center">
     <h1 id="title">Welcome to Test/Survey System</h1>
     <img id="title_image" src="assets/titleundraw.png">
-    <button mat-raised-button (click)="auth.googleSignin()">Sign In with Google</button>
+    <button mat-raised-button (click)="auth.googleSignin()" color= "blue">Sign In with Google</button>
   </div>
 </ng-template>
 

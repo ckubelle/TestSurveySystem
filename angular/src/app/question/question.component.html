@@ -1,26 +1,49 @@
-<div class="content">
-    <mat-selection-list #items>
-        <mat-list-option *ngFor="let item of items$ | async" [value]="item.id">
-            {{item.name}}
-        </mat-list-option>
-    </mat-selection-list>
-    <div class="bottom" fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="new-item">
-            <mat-form-field>
-                <mat-label>New question</mat-label>
-                <input matInput #input>
-            </mat-form-field>
-            <button 
-                mat-raised-button 
-                (click)="addItem(input.value)">
-                Add
-            </button>
+<form [formGroup]="myForm" fxLayout= "column" fxLayoutAlign="center">
+
+    <mat-form-field>
+        <input matInput placeholder="Enter Test/Survey Name" formControlName="email">
+
+        <mat-error *ngIf="email.pristine">
+            Please Enter a Test/Survey Name
+        </mat-error>
+
+    </mat-form-field>
+
+    <div formArrayName="phones">
+
+        <div *ngFor ="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+
+
+            <div fxLayout="column" fxLayoutAlign="space-between start">
+                <mat-card-title>
+                    <h3>Question #{{i}}</h3>
+                </mat-card-title>
+                
+                <mat-form-field>
+                    <input matInput placeholder="area" formControlName="area">
+                </mat-form-field>
+    
+    
+                <mat-form-field>
+                    <input matInput placeholder="prefix" formControlName="prefix">
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <input matInput placeholder="line" formControlName="line">
+                </mat-form-field>
+    
+                <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete</button>
+
+            </div>
+
+
         </div>
-        <button 
-            mat-raised-button 
-            *ngIf="items.selectedOptions.selected.length > 0"
-            (click)="removeItems(items.selectedOptions.selected)">
-            Complete Selected
-        </button>
     </div>
-</div>
+
+    <br>
+    <button mat-raised-button (click)="addPhone()">Add Question</button>
+
+    <br>
+    <button mat-raised-button [disabled]="myForm.invalid" color=primary>Submit</button>
+
+</form>
