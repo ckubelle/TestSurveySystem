@@ -1,4 +1,4 @@
-<form [formGroup]="myForm" fxLayout= "column" fxLayoutAlign="center">
+<form [formGroup]="myForm" fxLayout= "column" fxLayoutAlign="center" id="padding">
 
     <mat-form-field>
         <input matInput placeholder="Enter Test/Survey Name" formControlName="questionTitle">
@@ -26,7 +26,7 @@
         
                     <mat-form-field>
                         <mat-label> Question Type </mat-label>
-                        <mat-select (selectionChange)= "selectqType($event)" value="answerType"  formControlName="questionType"> 
+                        <mat-select value="answerType" formControlName="questionType"> 
                             <mat-option value = "sa">Short Answer</mat-option>
                             <mat-option value = "mc">Multiple Choice</mat-option>
                             <mat-option value = "ea">Essay Answer</mat-option>
@@ -37,7 +37,8 @@
                         </mat-select>
                     </mat-form-field>
 
-                        <div *ngIf= "mc" >
+                        
+                        <div *ngIf="question.value.questionType === 'mc'" >
                             <mat-form-field>
                                 <input matInput placeholder="Multiple Choice Option 1">
                             </mat-form-field>
@@ -52,41 +53,42 @@
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "sa" >
+                        <div *ngIf= "question.value.questionType === 'sa'" >
                             <mat-form-field>
                                 <input matInput placeholder="Short Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "ea" >
+                        <div *ngIf= "question.value.questionType === 'ea'" >
                             <mat-form-field>
                                 <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "mmc" >
+                        <div *ngIf= "question.value.questionType  === 'mmc'" >
                             <mat-form-field>
                                 <input matInput placeholder="Multiple multiple choice Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "tf" >
+                        <div *ngIf= "question.value.questionType  === 'tf'" >
                             <mat-form-field>
                                 <input matInput placeholder="True/false Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "ra" >
+                        <div *ngIf= "question.value.questionType  === 'ra'" >
                             <mat-form-field>
                                 <input matInput placeholder="Ranking Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
 
-                        <div *ngIf= "ma" >
+                        <div *ngIf= "question.value.questionType  === 'ma'" >
                             <mat-form-field>
                                 <input matInput placeholder="Matching Answer" formControlName="questionAnswer">
                             </mat-form-field>
                         </div>
+                        
 
                         
 

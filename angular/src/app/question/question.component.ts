@@ -44,9 +44,7 @@ export class QuestionComponent implements OnInit {
   }
 
 
-  answerType: { value: string;  } = {
-    value: "null",
-  };
+
   
   mc;
   sa;
@@ -55,7 +53,7 @@ export class QuestionComponent implements OnInit {
   tf;
   ra;
   ma;
-
+/*
   selectqType(event: MatSelectChange) {
     this.answerType.value=event.value;
     if (this.answerType.value == "mc") {
@@ -131,6 +129,7 @@ export class QuestionComponent implements OnInit {
     
     console.log(this.answerType);
   }
+  */
 
 
   addQuestion(){
@@ -141,8 +140,6 @@ export class QuestionComponent implements OnInit {
         questionTitle: [], 
         questionAnswer: [],
         questionType: [],
-        prefix: [],
-        line: [],
     })
 
     this.questionForms.push(question);
@@ -156,7 +153,7 @@ export class QuestionComponent implements OnInit {
    
   }
 
-  
+ 
 
 }
 
