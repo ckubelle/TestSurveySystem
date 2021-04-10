@@ -48,34 +48,89 @@ export class QuestionComponent implements OnInit {
   answerType: { value: string;  } = {
     value: "GB",
   };
-    
   
+  mc;
+  sa;
+  ea;
+  mmc;
+  tf;
+  ra;
+  ma;
 
   selectqType(event: MatSelectChange) {
     this.answerType.value=event.value;
     if (this.answerType.value == "mc") {
+      this.mc = true;
+      this.sa = false;
+      this.ea = false;
+      this.mmc = false;
+      this.tf = false;
+      this.ra = false;
+      this.ma = false;
       console.log("mc chosen");
       this.htmlstring = `
       <input matInput placeholder="Answer 1" formControlName="a1">
   `
         }
     else if (this.answerType.value == "sa") {
+        this.sa = true;
+        this.mc = false;
+        this.ea = false;
+        this.mmc = false;
+        this.tf = false;
+        this.ra = false;
+        this.ma = false;
           console.log("sa chosen");
         }
     else if (this.answerType.value == "ea") {
+        this.ea = true;
+        this.sa = false;
+        this.mc = false;
+        this.mmc = false;
+        this.tf = false;
+        this.ra = false;
+        this.ma = false;
           console.log("ea chosen");
         }
     else if (this.answerType.value == "mmc") {
+        this.mmc = true;
+        this.sa = false;
+        this.ea = false;
+        this.mc = false;
+        this.tf = false;
+        this.ra = false;
+        this.ma = false;
           console.log("mmc chosen");
         }        
     else if (this.answerType.value == "tf") {
           console.log("tf chosen");
+          this.tf = true;
+          this.sa = false;
+          this.ea = false;
+          this.mmc = false;
+          this.mc = false;
+          this.ra = false;
+          this.ma = false;
         }
     else if (this.answerType.value == "ra") {
           console.log("ra chosen");
+          this.ra = true;
+          this.sa = false;
+          this.ea = false;
+          this.mmc = false;
+          this.tf = false;
+          this.mc = false;
+          this.ma = false;
         }
     else if (this.answerType.value == "ma") {
           console.log("ma chosen");
+          this.ma = true;
+          this.sa = false;
+          this.ea = false;
+          this.mmc = false;
+          this.tf = false;
+          this.ra = false;
+          this.mc = false;
         }
     
     console.log(this.answerType);
@@ -98,7 +153,10 @@ export class QuestionComponent implements OnInit {
 
   deletePhone(i){
     this.phoneForms.removeAt(i);
+   
   }
+
+  
 
 }
 

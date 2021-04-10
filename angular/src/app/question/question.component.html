@@ -37,6 +37,57 @@
                         </mat-select>
                     </mat-form-field>
 
+                        <div *ngIf= "mc">
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 1">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 2">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 3">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 4">
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf= "sa">
+                            <mat-form-field>
+                                <input matInput placeholder="Short Answer">
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf= "ea">
+                            <mat-form-field>
+                                <input matInput placeholder="Essay Answer">
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf= "mmc">
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple multiple choice Answer">
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf= "tf">
+                            <mat-form-field>
+                                <input matInput placeholder="True/false Answer">
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf= "ra">
+                            <mat-form-field>
+                                <input matInput placeholder="Ranking Answer">
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf= "ma">
+                            <mat-form-field>
+                                <input matInput placeholder="Matching Answer">
+                            </mat-form-field>
+                        </div>
+
                         
 
                     <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete</button>
