@@ -20,18 +20,27 @@
                     </mat-card-content>
                     
                     <mat-form-field>
-                        <input matInput placeholder="area" formControlName="area">
+                        <input matInput placeholder="Question" formControlName="question">
                     </mat-form-field>
         
         
                     <mat-form-field>
-                        <input matInput placeholder="prefix" formControlName="prefix">
+                        <mat-label> Question Type </mat-label>
+                        <mat-select value="questionType" (selectionChange)= "selectqType($event)" value="answerType"> 
+                            <mat-option value = "mc">Multiple Choice</mat-option>
+                            <mat-option value = "sa">Short Answer</mat-option>
+                            <mat-option value = "ea">Essay Answer</mat-option>
+                            <mat-option value = "mmc">Multiple Multiple Choice</mat-option>
+                            <mat-option value = "tf">True/False</mat-option>
+                            <mat-option value = "ra">Ranking</mat-option>
+                            <mat-option value = "ma">Matching</mat-option>
+                        </mat-select>
                     </mat-form-field>
-        
-                    <mat-form-field>
-                        <input matInput placeholder="line" formControlName="line">
-                    </mat-form-field>
-        
+
+                        <mat-form-field>
+                            <input MatInput [innerHTML]="htmlstring">
+                        </mat-form-field>
+
                     <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete</button>
             
     
@@ -40,7 +49,7 @@
             <br>
 
 
-
+            
         </div>
     </div>
 
