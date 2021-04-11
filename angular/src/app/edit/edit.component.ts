@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  constructor(
+  private afs: AngularFirestore, 
+  private route: ActivatedRoute
+  ) 
+  {this.route.params.subscribe(params=>{
+    this.id = params.id;
+  })}
 
   ngOnInit(): void {
+
+    
   }
 
 }

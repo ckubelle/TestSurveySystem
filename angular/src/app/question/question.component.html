@@ -113,6 +113,8 @@
 </form>
 
 
-<div *ngIf="success">
-    yay! submitted
+<div *ngIf="success" id = "extraSpace" fxLayout="column" fxLayoutAlign="end center">
+
+    <h1>Your Test/Survey Has Been Created!</h1>
+    <button routerLink="" mat-raised-button color = primary>Return To Home</button>
 </div>  
