@@ -87,9 +87,26 @@
                 </div>
 
                 <div *ngIf= "question.value.questionType  === 'mmc'" >
-                    <mat-form-field>
-                        <input matInput placeholder="Multiple multiple choice Answer" formControlName="questionAnswer">
-                    </mat-form-field>
+                    <mat-checkbox>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 1">
+                        </mat-form-field>
+                    </mat-checkbox>
+                    <mat-checkbox>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 2">
+                        </mat-form-field>
+                    </mat-checkbox>
+                    <mat-checkbox>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 3">
+                        </mat-form-field>
+                    </mat-checkbox>
+                    <mat-checkbox>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 4">
+                        </mat-form-field>
+                    </mat-checkbox>
                 </div>
 
                 <div *ngIf= "question.value.questionType  === 'tf'" >
@@ -114,8 +131,6 @@
                             <input matInput placeholder="Matching Answer" formControlName="questionAnswer">
                         </mat-form-field>
                     </div>
-                        
-
                         
 
                     <button mat-raised-button color=warn (click)="deleteQuestion(i)">Delete</button>
