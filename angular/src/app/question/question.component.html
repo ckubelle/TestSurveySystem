@@ -1,9 +1,9 @@
-<form [formGroup]="myForm" [hidden] = "success" (ngSubmit)="submitHandler()" fxLayout= "column" fxLayoutAlign="center" id="padding">
+<form [formGroup]="myForm" *ngIf="!success"  fxLayout= "column" fxLayoutAlign="center" id="padding">
 
     <mat-form-field>
-        <input matInput placeholder="Enter Test/Survey Name" formControlName="questionTitle">
+        <input matInput placeholder="Enter Test/Survey Name" formControlName="testTitle">
 
-        <mat-error *ngIf="questionTitle.pristine">
+        <mat-error *ngIf="testTitle.pristine">
             Please Enter a Test/Survey Name
         </mat-error>
 
@@ -38,56 +38,56 @@
                     </mat-form-field>
 
                         
-                        <div *ngIf="question.value.questionType === 'mc'" >
-                            <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 1">
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 2">
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 3">
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 4">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf="question.value.questionType === 'mc'" >
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 1">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 2">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 3">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 4">
+                        </mat-form-field>
+                    </div>
 
-                        <div *ngIf= "question.value.questionType === 'sa'" >
-                            <mat-form-field>
-                                <input matInput placeholder="Short Answer" formControlName="questionAnswer">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf= "question.value.questionType === 'sa'" >
+                        <mat-form-field>
+                            <input matInput placeholder="Short Answer" formControlName="questionAnswer">
+                        </mat-form-field>
+                    </div>
 
-                        <div *ngIf= "question.value.questionType === 'ea'" >
-                            <mat-form-field>
-                                <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf= "question.value.questionType === 'ea'" >
+                        <mat-form-field>
+                            <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
+                        </mat-form-field>
+                    </div>
 
-                        <div *ngIf= "question.value.questionType  === 'mmc'" >
-                            <mat-form-field>
-                                <input matInput placeholder="Multiple multiple choice Answer" formControlName="questionAnswer">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf= "question.value.questionType  === 'mmc'" >
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple multiple choice Answer" formControlName="questionAnswer">
+                        </mat-form-field>
+                    </div>
 
-                        <div *ngIf= "question.value.questionType  === 'tf'" >
-                            <mat-form-field>
-                                <input matInput placeholder="True/false Answer" formControlName="questionAnswer">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf= "question.value.questionType  === 'tf'" >
+                        <mat-form-field>
+                            <input matInput placeholder="True/false Answer" formControlName="questionAnswer">
+                        </mat-form-field>
+                    </div>
 
-                        <div *ngIf= "question.value.questionType  === 'ra'" >
-                            <mat-form-field>
-                                <input matInput placeholder="Ranking Answer" formControlName="questionAnswer">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf= "question.value.questionType  === 'ra'" >
+                        <mat-form-field>
+                            <input matInput placeholder="Ranking Answer" formControlName="questionAnswer">
+                        </mat-form-field>
+                    </div>
 
-                        <div *ngIf= "question.value.questionType  === 'ma'" >
-                            <mat-form-field>
-                                <input matInput placeholder="Matching Answer" formControlName="questionAnswer">
-                            </mat-form-field>
-                        </div>
+                    <div *ngIf= "question.value.questionType  === 'ma'" >
+                        <mat-form-field>
+                            <input matInput placeholder="Matching Answer" formControlName="questionAnswer">
+                        </mat-form-field>
+                    </div>
                         
 
                         
@@ -108,7 +108,7 @@
     <button mat-raised-button (click)="addQuestion()">Add Question</button>
 
     <br>
-    <button mat-raised-button [disabled]="myForm.invalid" color=primary>Submit</button>
+    <button mat-raised-button type = "submit" (click)="submitHandler()" [disabled]="myForm.invalid" color=primary>Submit</button>
 
 </form>
 

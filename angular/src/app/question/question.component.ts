@@ -32,7 +32,7 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      questionTitle: ['', [
+      testTitle: ['', [
         Validators.required,
       ]],
       questions: this.fb.array([])
@@ -43,8 +43,8 @@ export class QuestionComponent implements OnInit {
     return this.myForm.get('questions') as FormArray
   }
 
-  get questionTitle(){
-      return this.myForm.get('questionTitle');
+  get testTitle(){
+      return this.myForm.get('testTitle');
   }
 
 
