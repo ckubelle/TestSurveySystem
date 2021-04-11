@@ -9,6 +9,18 @@
 
     </mat-form-field>
 
+    <mat-form-field>
+        <mat-label> Are you creating a Test or Survey? </mat-label>
+            <mat-select value="formType" formControlName="formTypeSelection"> 
+                <mat-option value = "test">Test</mat-option>
+                <mat-option value = "survey">Survey</mat-option>
+            </mat-select>
+        <mat-error *ngIf="formTypeSelection.pristine">
+            Please Choose an Option: Test or Survey
+        </mat-error>
+    
+    </mat-form-field>
+
     <div formArrayName="questions">
 
         <div *ngFor ="let question of questionForms.controls; let i=index" [formGroupName]="i" fxLayout="column" fxLayoutAlign="space-around center">

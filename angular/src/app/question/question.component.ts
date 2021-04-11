@@ -35,6 +35,9 @@ export class QuestionComponent implements OnInit {
       testTitle: ['', [
         Validators.required,
       ]],
+      formTypeSelection: ['', [
+        Validators.required,
+      ]],
       testCreator: this.id,
       questions: this.fb.array([])
     });
@@ -47,6 +50,10 @@ export class QuestionComponent implements OnInit {
   get testTitle(){
       return this.myForm.get('testTitle');
   }
+
+  get formTypeSelection(){
+    return this.myForm.get('formTypeSelection');
+}
 
 
   addQuestion(){
