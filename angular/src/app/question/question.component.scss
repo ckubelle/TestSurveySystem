@@ -34,4 +34,28 @@ mat-card{
     margin-right: 12px;
     margin-bottom: 6px;
   }
+
+  mat-checkbox{
+    display: flex;
+    flex-direction: column;
+  }
   
+.container{
+    width:100%;
+}
+.col-sm {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+
+  .grid-layout-custom{
+    width: 29vw;
+    height: 3vh;
+  }
+
+  .essay{
+    width:30vw;
+    height:6vw;
+  }

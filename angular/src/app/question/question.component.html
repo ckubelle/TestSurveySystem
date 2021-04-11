@@ -50,7 +50,7 @@
                     </mat-form-field>
 
                     <div *ngIf= "question.value.questionType  === 'mc'" >
-                    <mat-radio-group class = example-radio-group  aria-label="mcchoices">
+                    <mat-radio-group class = example-radio-group  aria-label="mcchoices" formControlName="questionAnswer">
                         <mat-radio-button class= example-radio-button color = primary value="mc1">
                             <mat-form-field>
                                 <input matInput placeholder="Multiple Choice Option 1">
@@ -80,7 +80,7 @@
                     </mat-form-field>
                 </div>
 
-                <div *ngIf= "question.value.questionType === 'ea'" >
+                <div *ngIf= "question.value.questionType === 'ea'" class ="essay">
                     <mat-form-field>
                         <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
                     </mat-form-field>
@@ -110,7 +110,7 @@
                 </div>
 
                 <div *ngIf= "question.value.questionType  === 'tf'" >
-                    <mat-radio-group  aria-label="True or False">
+                    <mat-radio-group  aria-label="True or False" formControlName = "questionAnswer">
                         <mat-radio-button color = primary value="True">
                         True
                     </mat-radio-button>
@@ -121,15 +121,28 @@
                 </div>
 
                     <div *ngIf= "question.value.questionType  === 'ra'" >
-                        <mat-form-field>
-                            <input matInput placeholder="Ranking Answer" formControlName="questionAnswer">
-                        </mat-form-field>
+                        <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>                            
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile> 
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
+                             </mat-grid-list>
                     </div>
 
-                    <div *ngIf= "question.value.questionType  === 'ma'" >
-                        <mat-form-field>
-                            <input matInput placeholder="Matching Answer" formControlName="questionAnswer">
-                        </mat-form-field>
+                    <div class="row" *ngIf= "question.value.questionType  === 'ma'" >
+                        <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 1 Left" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 1 Right" formControlName="questionAnswer"></mat-grid-tile>                            
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 2 Left" formControlName="questionAnswer"></mat-grid-tile> 
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 2 Right" formControlName="questionAnswer"></mat-grid-tile>
+                             </mat-grid-list>
+                        
                     </div>
                         
 

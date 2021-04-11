@@ -8,7 +8,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import {ReactiveFormsModule} from '@angular/forms';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips'
 import { MatButtonModule } from '@angular/material/button';
@@ -59,7 +59,8 @@ import { QuestionComponent } from './question/question.component';
     MatChipsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
