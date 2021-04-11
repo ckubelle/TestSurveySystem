@@ -35,6 +35,7 @@ export class QuestionComponent implements OnInit {
       testTitle: ['', [
         Validators.required,
       ]],
+      testCreator: this.id,
       questions: this.fb.array([])
     });
   }
