@@ -1,6 +1,7 @@
+<!--- Check if the user is signed in --->
 <div *ngIf="auth.user$ | async as user; else signIn" fxLayout="column" fxLayoutAlign="space-evenly center"  >
 
-
+<!--- Display the user info --->
     <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
       <div fxLayout="row" fxLayoutAlign="start center">
         <img [src]="user.photoURL">
@@ -14,6 +15,7 @@
 
   <mat-divider></mat-divider>
 
+<!--- Display the buttons to take you to different pages --->
     <div fxLayout= "column" fxLayoutGap="15px">
     <button routerLink="/todo/{{user.uid}}" mat-raised-button color = "blue"> ToDo Example</button>
     <button routerLink="/create/{{user.uid}}" mat-raised-button color = "blue"> Create: Test/Survey</button>
@@ -24,7 +26,7 @@
 </div>
 
 
-
+<!--- Allow user to sign in --->
 <ng-template #signIn>
   <div fxLayout="column" fxLayoutAlign="space-between center">
     <h1 id="title">Welcome to Test/Survey System</h1>

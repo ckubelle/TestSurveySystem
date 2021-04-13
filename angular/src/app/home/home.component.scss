@@ -7,16 +7,19 @@ mat-toolbar {
     font-size: 300%;
   }
   
+  //resize image used on page
   #title_image {
     width: 50%;
     height: auto;
-  }
+  } 
 
+  //hover over buttons changes color
   .mat-raised-button.mat-blue:hover{
     background-color: #3f51b5;
     color: white;
   }
 
+  //create and format the header
 .header {
     width: 200%;
     

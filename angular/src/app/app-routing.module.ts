@@ -8,6 +8,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { TakeComponent } from './take/take.component';
 import { TodoComponent } from './todo/todo.component';
 
+//Routing different pages to different components
 const routes: Routes = [
   {path : '', component: HomeComponent},
   {path : 'todo/:id', component: TodoComponent},

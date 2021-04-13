@@ -43,19 +43,22 @@ export class QuestionComponent implements OnInit {
     });
   }
 
+//Getter for all of the questions in a form
   get questionForms(){
     return this.myForm.get('questions') as FormArray
   }
 
+//Getter for the title of the test  
   get testTitle(){
       return this.myForm.get('testTitle');
   }
 
+//Getter for the type of form (quiz or test)
   get formTypeSelection(){
     return this.myForm.get('formTypeSelection');
 }
 
-
+//function to add a question to the form (connects to the button)
   addQuestion(){
 
     console.log(this.myForm);
@@ -70,12 +73,13 @@ export class QuestionComponent implements OnInit {
 
   }
   
-
+//function to delete a question (connects to button)
   deleteQuestion(question){
     this.questionForms.removeAt(question);
    
   }
 
+//function to post test/survey information to Firebase
   async submitHandler(){
     this.loading = true;
 

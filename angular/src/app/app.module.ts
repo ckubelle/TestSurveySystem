@@ -30,7 +30,7 @@ import { GradeComponent } from './grade/grade.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { QuestionComponent } from './question/question.component';
 
-
+//import everything
 @NgModule({
   declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent, QuestionComponent],
   imports: [
