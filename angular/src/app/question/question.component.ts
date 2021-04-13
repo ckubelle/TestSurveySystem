@@ -58,6 +58,7 @@ export class QuestionComponent implements OnInit {
     return this.myForm.get('formTypeSelection');
 }
 
+//Getter for the answer of each question
 get questionAnswer(){
   return this.myForm.get('questionAnswer');
 }
