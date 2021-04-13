@@ -58,22 +58,22 @@
                     <mat-radio-group class = example-radio-group  aria-label="mcchoices" formControlName="questionAnswer">
                         <mat-radio-button class= example-radio-button color = primary value="mc1">
                             <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 1">
+                                <input matInput placeholder="Multiple Choice Option 1" formControlName="mcoption1">
                             </mat-form-field>
                     </mat-radio-button>                    
                     <mat-radio-button class= example-radio-button color = primary value="mc2">
                             <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 2">
+                                <input matInput placeholder="Multiple Choice Option 2" formControlName="mcoption2">
                             </mat-form-field>
-                    </mat-radio-button>          
+                    </mat-radio-button>
                     <mat-radio-button class= example-radio-button color = primary value="mc3">
                             <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 3">
+                                <input matInput placeholder="Multiple Choice Option 3" formControlName="mcoption3">
                             </mat-form-field>
-                    </mat-radio-button>          
+                    </mat-radio-button>
                     <mat-radio-button class= example-radio-button  color = primary value="mc4">
                             <mat-form-field>
-                                <input matInput placeholder="Multiple Choice Option 4">
+                                <input matInput placeholder="Multiple Choice Option 4" formControlName="mcoption4">
                             </mat-form-field>
                     </mat-radio-button>          
                 </mat-radio-group>
@@ -97,22 +97,22 @@
                 <div *ngIf= "question.value.questionType  === 'mmc'" >
                     <mat-checkbox color = primary value="mmc1">
                         <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 1">
+                            <input matInput placeholder="Multiple Choice Option 1" formControlName="mcoption1">
                         </mat-form-field>
                     </mat-checkbox>
                     <mat-checkbox color = primary value="mmc2">
                         <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 2">
+                            <input matInput placeholder="Multiple Choice Option 2" formControlName="mcoption2">
                         </mat-form-field>
                     </mat-checkbox>
                     <mat-checkbox color = primary value="mmc3">
                         <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 3">
+                            <input matInput placeholder="Multiple Choice Option 3" formControlName="mcoption3">
                         </mat-form-field>
                     </mat-checkbox>
                     <mat-checkbox color = primary value="mmc4">
                         <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 4">
+                            <input matInput placeholder="Multiple Choice Option 4" formControlName="mcoption4">
                         </mat-form-field>
                     </mat-checkbox>
                 </div>
@@ -132,26 +132,26 @@
 <!--- If the user chooses ranking --->
                     <div *ngIf= "question.value.questionType  === 'ra'" >
                         <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>                            
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile> 
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer1"></mat-grid-tile>                            
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank2"></mat-grid-tile> 
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer2"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank3"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer3"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank4"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer4"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank5"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer5"></mat-grid-tile>
                              </mat-grid-list>
                     </div>
 
 <!--- If the user chooses matching --->
                     <div class="row" *ngIf= "question.value.questionType  === 'ma'" >
                         <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
-                            <mat-grid-tile><input matInput placeholder="Matching Answer 1 Left" formControlName="questionAnswer"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Matching Answer 1 Right" formControlName="questionAnswer"></mat-grid-tile>                            
-                            <mat-grid-tile><input matInput placeholder="Matching Answer 2 Left" formControlName="questionAnswer"></mat-grid-tile> 
-                            <mat-grid-tile><input matInput placeholder="Matching Answer 2 Right" formControlName="questionAnswer"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 1 Left" formControlName="leftanswer1"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 1 Right" formControlName="rightanswer1"></mat-grid-tile>                            
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 2 Left" formControlName="leftanswer2"></mat-grid-tile> 
+                            <mat-grid-tile><input matInput placeholder="Matching Answer 2 Right" formControlName="rightanswer2"></mat-grid-tile>
                              </mat-grid-list>
                         
                     </div>

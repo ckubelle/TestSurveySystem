@@ -67,13 +67,30 @@ get questionAnswer(){
   addQuestion(){
 
     console.log(this.myForm);
-
+    
     const question = this.fb.group({
         questionTitle: [], 
         questionAnswer: [],
         questionType: [],
+        mcoption1: [],
+        mcoption2: [],
+        mcoption3: [],
+        mcoption4: [],
+        rank1: [],
+        rank2: [],
+        rank3: [],
+        rank4: [],
+        rank5: [],
+        rankAnswer1: [],
+        rankAnswer2: [],
+        rankAnswer3: [],
+        rankAnswer4: [],
+        rankAnswer5: [],
+        leftanswer1: [],
+        rightanswer1: [],
+        leftanswer2: [],
+        rightanswer2: [],
     })
-
     this.questionForms.push(question);
 
   }
