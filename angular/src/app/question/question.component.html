@@ -80,14 +80,14 @@
                 </div>
 
 <!--- If the user chooses short answer --->
-                <div *ngIf= "question.value.questionType === 'sa'" >
+                <div *ngIf= "question.value.questionType === 'sa' && formTypeSelection.value === 'test'" >
                     <mat-form-field>
                         <input matInput placeholder="Short Answer" formControlName="questionAnswer">
                     </mat-form-field>
                 </div>
 
 <!--- If the user chooses essay answer --->
-                <div *ngIf= "question.value.questionType === 'ea'" class ="essay">
+                <div *ngIf= "question.value.questionType === 'ea' && formTypeSelection.value === 'test'"  class ="essay">
                     <mat-form-field>
                         <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
                     </mat-form-field>
@@ -118,7 +118,7 @@
                 </div>
 
 <!--- If the user chooses true or false --->
-                <div *ngIf= "question.value.questionType  === 'tf'" >
+                <div *ngIf= "question.value.questionType  === 'tf' && formTypeSelection.value === 'test'" >
                     <mat-radio-group  aria-label="True or False" formControlName = "questionAnswer">
                         <mat-radio-button color = primary value="True">
                         True
