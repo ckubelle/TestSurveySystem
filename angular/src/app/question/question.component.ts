@@ -58,6 +58,10 @@ export class QuestionComponent implements OnInit {
     return this.myForm.get('formTypeSelection');
 }
 
+get questionAnswer(){
+  return this.myForm.get('questionAnswer');
+}
+
 //function to add a question to the form (connects to the button)
   addQuestion(){
 
