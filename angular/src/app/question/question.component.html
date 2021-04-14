@@ -120,7 +120,7 @@
                 </div>
 
 <!--- If the user chooses multiple multiple choice --->
-                <div *ngIf= "question.value.questionType  === 'mmc'" >
+                <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'test'" >
                     <mat-checkbox color = primary value="mmc1">
                         <mat-form-field>
                             <input matInput placeholder="Multiple Choice Option 1" formControlName="mcoption1">
@@ -143,6 +143,29 @@
                     </mat-checkbox>
                 </div>
 
+                <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'survey'" >
+                    <mat-checkbox color = primary value="mmc1" disabled>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 1" formControlName="mcoption1">
+                        </mat-form-field>
+                    </mat-checkbox>
+                    <mat-checkbox color = primary value="mmc2" disabled>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 2" formControlName="mcoption2">
+                        </mat-form-field>
+                    </mat-checkbox>
+                    <mat-checkbox color = primary value="mmc3" disabled>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 3" formControlName="mcoption3">
+                        </mat-form-field>
+                    </mat-checkbox>
+                    <mat-checkbox color = primary value="mmc4" disabled>
+                        <mat-form-field>
+                            <input matInput placeholder="Multiple Choice Option 4" formControlName="mcoption4">
+                        </mat-form-field>
+                    </mat-checkbox>
+                </div>
+
 <!--- If the user chooses true or false --->
                 <div *ngIf= "question.value.questionType  === 'tf' && formTypeSelection.value === 'test'" >
                     <mat-radio-group  aria-label="True or False" formControlName = "questionAnswer">
@@ -156,7 +179,22 @@
                 </div>
 
 <!--- If the user chooses ranking --->
-                    <div *ngIf= "question.value.questionType  === 'ra'" >
+                    <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'test'" >
+                        <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer1"></mat-grid-tile>                            
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank2"></mat-grid-tile> 
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer2"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank3"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer3"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank4"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer4"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank5"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer5"></mat-grid-tile>
+                             </mat-grid-list>
+                    </div>
+
+                    <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'survey'" >
                         <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
                             <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1"></mat-grid-tile>
                             <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer1"></mat-grid-tile>                            
