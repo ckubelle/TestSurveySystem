@@ -1,6 +1,11 @@
 <!--- Title for edit surveys/test --->
 <div fxLayout="column" fxLayoutAlign="center">
-    <h1 id=title >Edit Your Tesy/Surveys</h1>
+    <h1 id=title >Edit Your Tests/Surveys</h1>
+    <mat-list *ngFor= "let indiForm of allForms">
+        <mat-list-item *ngIf="indiForm.testCreator == id">
+            {{indiForm.testTitle}}, You, {{indiForm.formTypeSelection}}
+        </mat-list-item>
+    </mat-list>
 </div>
 
 
