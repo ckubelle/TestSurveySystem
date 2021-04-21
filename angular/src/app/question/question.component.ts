@@ -22,9 +22,8 @@ import { MatFormField, MAT_FORM_FIELD } from '@angular/material/form-field';
   styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-  id: string;
   myForm: FormGroup;
-  question: FormControl;
+  docId: string;
 
   loading = false;
   success = false;
@@ -35,42 +34,20 @@ export class QuestionComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.route.params.subscribe((params) => {
-      this.id = params.id;
+      this.docId = params.docId;
+      this.afs.doc<any>(`tests/${this.docId}`).valueChanges().subscribe((document) => {
+        this.myForm = new FormGroup({
+          testTitle: new FormControl([document.testTitle, [Validators.required]]),
+          formTypeSelection: new FormControl([document.formTypeSelection, [Validators.required]]),
+          testCreator: document.testCreator,
+          questions: document.questions,
+        })
+      })
     });
   }
 
   ngOnInit(): void {
-    this.question = this.fb.control({
-      questionTitle: [''],
-      questionAnswer: [''],
-      questionType: [''],
-      mcoption1: [],
-      mcoption2: [],
-      mcoption3: [],
-      mcoption4: [],
-      rank1: [],
-      rank2: [],
-      rank3: [],
-      rank4: [],
-      rank5: [],
-      rankAnswer1: [],
-      rankAnswer2: [],
-      rankAnswer3: [],
-      rankAnswer4: [],
-      rankAnswer5: [],
-      leftanswer1: [],
-      rightanswer1: [],
-      leftanswer2: [],
-      rightanswer2: [],
-    });
-    this.myForm = this.fb.group({
-      //testTitle: ['', [Validators.required]],
-      //formTypeSelection: ['', [Validators.required]],
-      testTitle: new FormControl(['']),
-      formTypeSelection: new FormControl(['']),
-      testCreator: new FormControl(this.id),
-      questions: this.fb.array([this.question]),
-    });
+
   }
 
   //Getter for all of the questions in a form
@@ -130,34 +107,6 @@ export class QuestionComponent implements OnInit {
   //function to delete a question (connects to button)
   deleteQuestion(question) {
     this.questionForms.removeAt(question);
-  }
-
-  async preloadData(
-    title: string,
-    selection: string,
-    qs: FormArray,
-    questionLength: number,
-    selectedId: string,
-    currentDocument: QueryDocumentSnapshot<any>
-  ) {
-    this.id = await currentDocument.get('testCreator');
-    await this.testTitle.patchValue(currentDocument.get('testTitle'));
-    await this.formTypeSelection.patchValue(
-      currentDocument.get('formTypeSelection')
-    );
-    this.questionForms = currentDocument.get('questions');
-    while (this.questionForms.length) {
-      this.questionForms.removeAt(0);
-    }
-
-    currentDocument.get('questions').array.forEach((question) => {
-      this.questionForms.push(question);
-    });
-    //for (let i = 0; i < questionLength; i++) {
-    //this.questionForms.push(qs.value.at(i));
-    //}
-
-    console.log(this.myForm);
   }
 
   //function to post test/survey information to Firebase

@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TakeComponent } from './take/take.component';
 import { TodoComponent } from './todo/todo.component';
+import { QuestionComponent } from './question/question.component';
 
 //Routing different pages to different components
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path : 'take/:id', component: TakeComponent},
   {path : 'edit/:id', component: EditComponent},
   {path : 'grade/:id', component: GradeComponent},
+  {path : 'edit/:id/:docId', component: QuestionComponent},
   {path : '**', component: NotfoundComponent}];
 
 @NgModule({

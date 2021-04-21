@@ -19,7 +19,7 @@ import { QuestionComponent } from '../question/question.component';
 })
 export class EditComponent implements OnInit {
   id: string;
-  allFormsArray: Array<any>;
+  myFormsArray: Array<any>;
 
   testTitle: string;
   formTypeSelection: string;
@@ -38,44 +38,11 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.afs
-      .collection('tests')
-      .valueChanges()
+      .collection('tests', ref => ref.where('testCreator', '==', this.id))
+      .valueChanges({idField: "docId"})
       .subscribe((formsList) => {
-        this.allFormsArray = formsList as Array<any>;
-        console.log(typeof this.allFormsArray);
+        this.myFormsArray = formsList as Array<any>;
       });
   }
-
-  async getQuestions(indiForm) {
-    await this.afs
-      .collection('tests')
-      .snapshotChanges()
-      .subscribe(async (documentList) => {
-        try {
-          await documentList.some(async (document) => {
-            this.currentDocument = await document.payload.doc;
-            this.testTitle = await this.currentDocument.get('testTitle');
-            this.formTypeSelection = await this.currentDocument.get(
-              'formTypeSelection'
-            );
-            this.testCreator = await this.currentDocument.get('testCreator');
-            await this.questions.patchValue(
-              this.currentDocument.get('questions')
-            );
-            this.questionLength = await this.questions.length;
-            if (
-              this.formTypeSelection == indiForm.formTypeSelection &&
-              this.questions.length == indiForm.questions.length &&
-              this.testCreator == indiForm.testCreator &&
-              this.testTitle == indiForm.testTitle
-            ) {
-              this.selectedId = this.currentDocument.id;
-              throw new Error();
-            }
-          });
-        } catch (e) {
-          console.log(e);
-        }
-      });
-  }
+  
 }

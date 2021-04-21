@@ -1,31 +1,45 @@
 <!--- Title for edit surveys/test --->
 <div fxLayout="column" fxLayoutAlign="center">
-    <h1 id=title >Edit Your Tests/Surveys</h1>
-    <div>
-        <mat-grid-list cols="3" style="font-size: large; margin-bottom: -50px; width: 90%; margin-left: -10px">
-            <mat-grid-tile>Name</mat-grid-tile>
-            <mat-grid-tile>Owner</mat-grid-tile>
-            <mat-grid-tile>Type</mat-grid-tile>
-        </mat-grid-list>
+  <h1 id="title">Edit Your Tests/Surveys</h1>
+  <div>
+    <mat-grid-list
+      cols="3"
+      style="
+        font-size: large;
+        margin-bottom: -50px;
+        width: 90%;
+        margin-left: -10px;
+      "
+    >
+      <mat-grid-tile>Name</mat-grid-tile>
+      <mat-grid-tile>Owner</mat-grid-tile>
+      <mat-grid-tile>Type</mat-grid-tile>
+    </mat-grid-list>
 
-        <div *ngFor= "let indiForm of allFormsArray" cols="3" class="tests-layout-custom">
-            <div *ngIf="indiForm.testCreator == id">
-                <div fxLayout="row">
-                    <mat-card style="margin:10px; width: 90%; padding: 10px">
-                        <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
-                            <p>{{indiForm.testTitle}}</p>
-                            <p>You</p>
-                            <p style="width: 3vw; text-align: center">{{indiForm.formTypeSelection}}</p>
-                        </mat-card-content>
-                    </mat-card>
-                    <button (click)="[getQuestions(indiForm), formToEdit.preloadData(testTitle, formTypeSelection, questions, questionLength, selectedId, currentDocument)]" mat-raised-button color="primary" style="height: 40px; width: 10%; align-self:center">Edit</button>
-                </div>
-            </div>
-        </div>
-        <app-question #formToEdit></app-question>
+    <div
+      *ngFor="let singleForm of myFormsArray"
+      cols="3"
+      class="tests-layout-custom"
+    >
+      <div fxLayout="row">
+        <mat-card style="margin: 10px; width: 90%; padding: 10px">
+          <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
+            <p>{{ singleForm.testTitle }}</p>
+            <p>You</p>
+            <p style="width: 3vw; text-align: center">
+              {{ singleForm.formTypeSelection }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <button
+          routerLink= "./{{singleForm.docId}}"
+          mat-raised-button
+          color="primary"
+          style="height: 40px; width: 10%; align-self: center"
+        >
+          Edit
+        </button>
+      </div>
     </div>
+  </div>
 </div>
-
-
-
-
