@@ -27,6 +27,7 @@ export class QuestionComponent implements OnInit {
 
   loading = false;
   success = false;
+  editing = false;
 
   constructor(
     private afs: AngularFirestore,
@@ -35,28 +36,65 @@ export class QuestionComponent implements OnInit {
   ) {
     this.route.params.subscribe((params) => {
       this.docId = params.docId;
-      this.afs.doc<any>(`tests/${this.docId}`).valueChanges().subscribe((document) => {
-        this.myForm = new FormGroup({
-          testTitle: new FormControl([document.testTitle, [Validators.required]]),
-          formTypeSelection: new FormControl([document.formTypeSelection, [Validators.required]]),
-          testCreator: document.testCreator,
-          questions: document.questions,
-        })
-      })
+      this.afs
+        .doc<any>(`tests/${this.docId}`)
+        .valueChanges()
+        .subscribe((document) => {
+          if (document) {
+            this.editing = true;
+            this.myForm = this.fb.group({
+              testTitle: [document.testTitle, [Validators.required]],
+              formTypeSelection: [
+                document.formTypeSelection,
+                [Validators.required],
+              ],
+              testCreator: document.testCreator,
+              questions: this.fb.array([]),
+            });
+            for (let docQuestion of document.questions) {
+              const question = this.fb.group({
+                questionTitle: [docQuestion.questionTitle],
+                questionAnswer: [docQuestion.questionAnswer],
+                questionType: [docQuestion.questionType],
+                mcoption1: [docQuestion.mcoption1],
+                mcoption2: [docQuestion.mcoption2],
+                mcoption3: [docQuestion.mcoption3],
+                mcoption4: [docQuestion.mcoption4],
+                rank1: [docQuestion.rank1],
+                rank2: [docQuestion.rank2],
+                rank3: [docQuestion.rank3],
+                rank4: [docQuestion.rank4],
+                rank5: [docQuestion.rank5],
+                rankAnswer1: [docQuestion.rankAnswer1],
+                rankAnswer2: [docQuestion.rankAnswer2],
+                rankAnswer3: [docQuestion.rankAnswer3],
+                rankAnswer4: [docQuestion.rankAnswer4],
+                rankAnswer5: [docQuestion.rankAnswer5],
+                leftanswer1: [docQuestion.leftanswer1],
+                rightanswer1: [docQuestion.rightanswer1],
+                leftanswer2: [docQuestion.leftanswer2],
+                rightanswer2: [docQuestion.rightanswer2],
+              });
+
+              this.questionForms.push(question);
+            }
+          } else {
+            this.myForm = this.fb.group({
+              testTitle: ['', [Validators.required]],
+              formTypeSelection: ['', [Validators.required]],
+              testCreator: params.id,
+              questions: this.fb.array([]),
+            });
+          }
+        });
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   //Getter for all of the questions in a form
   get questionForms() {
     return this.myForm.get('questions') as FormArray;
-  }
-
-  set questionForms(questions: FormArray) {
-    this.myForm['questions'] = questions;
   }
 
   //Getter for the title of the test
@@ -116,7 +154,11 @@ export class QuestionComponent implements OnInit {
     const formValue = this.myForm.value;
 
     try {
-      await this.afs.collection('tests').add(formValue);
+      if (this.editing) {
+        await this.afs.doc<any>(`tests/${this.docId}`).update(formValue);
+      } else {
+        await this.afs.collection('tests').add(formValue);
+      }
       this.success = true;
     } catch (err) {
       console.log(err);
