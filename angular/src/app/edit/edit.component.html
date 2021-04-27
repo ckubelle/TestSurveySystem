@@ -25,14 +25,14 @@
         <mat-card style="margin: 10px; width: 90%; padding: 10px">
           <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
             <p>{{ singleForm.testTitle }}</p>
-            <p>You</p>
+            <p>{{ singleForm.creatorName }}</p>
             <p style="width: 3vw; text-align: center">
               {{ singleForm.formTypeSelection }}
             </p>
           </mat-card-content>
         </mat-card>
         <button
-          routerLink= "./{{singleForm.docId}}"
+          routerLink="./{{ singleForm.docId }}"
           mat-raised-button
           color="primary"
           style="height: 40px; width: 10%; align-self: center"

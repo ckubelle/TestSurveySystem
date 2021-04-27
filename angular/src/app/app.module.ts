@@ -29,10 +29,11 @@ import { EditComponent } from './edit/edit.component';
 import { GradeComponent } from './grade/grade.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { QuestionComponent } from './question/question.component';
+import { TakeQuestionComponent } from './take-question/take-question.component';
 
 //import everything
 @NgModule({
-  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent, QuestionComponent],
+  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent, QuestionComponent, TakeQuestionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
