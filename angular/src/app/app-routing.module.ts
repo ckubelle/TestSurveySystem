@@ -9,6 +9,7 @@ import { TakeComponent } from './take/take.component';
 import { TodoComponent } from './todo/todo.component';
 import { QuestionComponent } from './question/question.component';
 import { TakeQuestionComponent } from './take-question/take-question.component';
+import { GradeQuestionComponent } from './grade-question/grade-question.component';
 
 //Routing different pages to different components
 const routes: Routes = [

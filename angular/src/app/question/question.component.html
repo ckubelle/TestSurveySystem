@@ -157,26 +157,28 @@
                 </div>
 
                 <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'survey'" >
-                    <mat-checkbox color = primary value="mmc1" disabled>
-                        <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 1" formControlName="mcoption1">
-                        </mat-form-field>
-                    </mat-checkbox>
-                    <mat-checkbox color = primary value="mmc2" disabled>
-                        <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 2" formControlName="mcoption2">
-                        </mat-form-field>
-                    </mat-checkbox>
-                    <mat-checkbox color = primary value="mmc3" disabled>
-                        <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 3" formControlName="mcoption3">
-                        </mat-form-field>
-                    </mat-checkbox>
-                    <mat-checkbox color = primary value="mmc4" disabled>
-                        <mat-form-field>
-                            <input matInput placeholder="Multiple Choice Option 4" formControlName="mcoption4">
-                        </mat-form-field>
-                    </mat-checkbox>
+                    <mat-selection-list formControlName="questionAnswer">
+                        <mat-list-option color = primary value="mmc1" disabled>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 1" formControlName="mcoption1" >
+                            </mat-form-field>
+                        </mat-list-option>
+                        <mat-list-option color = primary value="mmc2" disabled>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 2" formControlName="mcoption2">
+                            </mat-form-field>
+                        </mat-list-option>
+                        <mat-list-option color = primary value="mmc3" disabled>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 3" formControlName="mcoption3">
+                            </mat-form-field>
+                        </mat-list-option>
+                        <mat-list-option color = primary value="mmc4" disabled>
+                            <mat-form-field>
+                                <input matInput placeholder="Multiple Choice Option 4" formControlName="mcoption4">
+                            </mat-form-field>
+                        </mat-list-option>
+                    </mat-selection-list>
                 </div>
 
 <!--- If the user chooses true or false --->
