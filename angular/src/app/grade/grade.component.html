@@ -1,5 +1,55 @@
-<!--- Title for grade surveys/tests --->
+<!--- Title for edit surveys/test --->
 <div fxLayout="column" fxLayoutAlign="center">
-    <h1 id=title >Grade Your Test/Surveys</h1>
-</div>
-
+    <h1 id="title">Grade Your Tests/Surveys</h1>
+    <div>
+        <mat-grid-list
+        cols="3"
+        style="
+          font-size: large;
+          margin-bottom: -50px;
+          width: 95%;
+          text-align: center;
+        "
+      >
+        <mat-grid-tile style="margin-left:-30px">Name </mat-grid-tile>
+        <mat-grid-tile style="margin-left:-20px">Taker</mat-grid-tile>
+        <mat-grid-tile style="margin-left:-25px">Type</mat-grid-tile>
+      </mat-grid-list>
+  
+      <div
+        *ngFor="let singleForm of myFormsArray"
+        cols="3"
+        class="tests-layout-custom"
+      >
+        <div fxLayout="row">
+          <mat-card style="margin: 10px; width: 90%; padding: 10px">
+            <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
+              <p style="width: 3vw; text-align: left">{{ singleForm.testTitle }}</p>
+              <p style="width: 3vw; text-align: center">{{ singleForm.creatorName }}</p>
+              <p style="width: 3vw; text-align: left">
+                {{ singleForm.formTypeSelection }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+          
+          <button *ngIf= "singleForm.formTypeSelection === 'test'"
+            routerLink= "./{{singleForm.docId}}"
+            mat-raised-button
+            color="primary"
+            style="height: 40px; width: 10%; align-self: center"
+          >
+            Grade
+          </button>
+            <button *ngIf= "singleForm.formTypeSelection === 'survey'"
+              routerLink= "./{{singleForm.docId}}"
+              mat-raised-button
+              color="primary"
+              style="height: 40px; width: 10%; align-self: center"
+            >
+              View
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
