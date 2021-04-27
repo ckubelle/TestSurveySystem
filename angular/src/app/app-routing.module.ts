@@ -17,6 +17,7 @@ const routes: Routes = [
   {path : 'edit/:id', component: EditComponent},
   {path : 'grade/:id', component: GradeComponent},
   {path : 'edit/:id/:docId', component: QuestionComponent},
+  {path : 'grade/:id/:docId', component: QuestionComponent},
   {path : '**', component: NotfoundComponent}];
 
 @NgModule({

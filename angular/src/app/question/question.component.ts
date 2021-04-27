@@ -48,7 +48,7 @@ export class QuestionComponent implements OnInit {
                 document.formTypeSelection,
                 [Validators.required],
               ],
-              creatorName: [document.testTitle, [Validators.required]],
+              creatorName: [document.creatorName, [Validators.required]],
               testCreator: document.testCreator,
               questions: this.fb.array([]),
             });

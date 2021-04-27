@@ -12,7 +12,7 @@
         "
       >
         <mat-grid-tile>Name</mat-grid-tile>
-        <mat-grid-tile>Owner</mat-grid-tile>
+        <mat-grid-tile>Taker</mat-grid-tile>
         <mat-grid-tile>Type</mat-grid-tile>
       </mat-grid-list>
   
@@ -31,8 +31,8 @@
               </p>
             </mat-card-content>
           </mat-card>
-          <div *ngIf= "singleForm.formTypeSelection === 'test'">
-          <button
+          
+          <button *ngIf= "singleForm.formTypeSelection === 'test'"
             routerLink= "./{{singleForm.docId}}"
             mat-raised-button
             color="primary"
@@ -40,9 +40,7 @@
           >
             Grade
           </button>
-        </div>
-        <div *ngIf= "singleForm.formTypeSelection === 'survey'">
-            <button
+            <button *ngIf= "singleForm.formTypeSelection === 'survey'"
               routerLink= "./{{singleForm.docId}}"
               mat-raised-button
               color="primary"
@@ -50,7 +48,6 @@
             >
               View
             </button>
-          </div>
         </div>
       </div>
     </div>
