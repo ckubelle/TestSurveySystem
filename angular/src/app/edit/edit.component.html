@@ -7,13 +7,13 @@
       style="
         font-size: large;
         margin-bottom: -50px;
-        width: 90%;
-        margin-left: -10px;
+        width: 95%;
+        text-align: center;
       "
     >
-      <mat-grid-tile>Name</mat-grid-tile>
-      <mat-grid-tile>Owner</mat-grid-tile>
-      <mat-grid-tile>Type</mat-grid-tile>
+      <mat-grid-tile style="margin-left:-23px">Name </mat-grid-tile>
+      <mat-grid-tile style="margin-left:-17px">Owner</mat-grid-tile>
+      <mat-grid-tile style="margin-left:-35px">Type</mat-grid-tile>
     </mat-grid-list>
 
     <div
@@ -24,9 +24,9 @@
       <div fxLayout="row">
         <mat-card style="margin: 10px; width: 90%; padding: 10px">
           <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
-            <p>{{ singleForm.testTitle }}</p>
-            <p>You</p>
-            <p style="width: 3vw; text-align: center">
+            <p style="width: 3vw; text-align: left">{{ singleForm.testTitle }}</p>
+            <p style="width: 3vw; text-align: center">You</p>
+            <p style="width: 3vw; text-align: left">
               {{ singleForm.formTypeSelection }}
             </p>
           </mat-card-content>

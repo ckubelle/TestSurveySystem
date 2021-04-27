@@ -2,18 +2,18 @@
 <div fxLayout="column" fxLayoutAlign="center">
     <h1 id="title">Grade Your Tests/Surveys</h1>
     <div>
-      <mat-grid-list
+        <mat-grid-list
         cols="3"
         style="
           font-size: large;
           margin-bottom: -50px;
-          width: 90%;
-          margin-left: -10px;
+          width: 95%;
+          text-align: center;
         "
       >
-        <mat-grid-tile>Name</mat-grid-tile>
-        <mat-grid-tile>Taker</mat-grid-tile>
-        <mat-grid-tile>Type</mat-grid-tile>
+        <mat-grid-tile style="margin-left:-30px">Name </mat-grid-tile>
+        <mat-grid-tile style="margin-left:-20px">Taker</mat-grid-tile>
+        <mat-grid-tile style="margin-left:-25px">Type</mat-grid-tile>
       </mat-grid-list>
   
       <div
@@ -24,9 +24,9 @@
         <div fxLayout="row">
           <mat-card style="margin: 10px; width: 90%; padding: 10px">
             <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
-              <p>{{ singleForm.testTitle }}</p>
-              <p>{{ singleForm.creatorName }}</p>
-              <p style="width: 3vw; text-align: center">
+              <p style="width: 3vw; text-align: left">{{ singleForm.testTitle }}</p>
+              <p style="width: 3vw; text-align: center">{{ singleForm.creatorName }}</p>
+              <p style="width: 3vw; text-align: left">
                 {{ singleForm.formTypeSelection }}
               </p>
             </mat-card-content>
