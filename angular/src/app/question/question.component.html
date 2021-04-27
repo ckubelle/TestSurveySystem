@@ -11,6 +11,7 @@
 
     </mat-form-field>
 
+
 <!--- This field determines if it is a test or survey and saves info --->
     <mat-form-field>
         <mat-label> Are you creating a Test or Survey? </mat-label>
@@ -23,6 +24,16 @@
         </mat-error>
     
     </mat-form-field>
+
+<!--- This field saves the creator name --->
+<mat-form-field>
+    <input matInput placeholder="Enter your Name" formControlName="creatorName">
+
+    <mat-error *ngIf="testTitle.pristine">
+        Please Enter your Name
+    </mat-error>
+
+</mat-form-field>
 
 <!--- This function counts and displays the number of questions --->
     <div formArrayName="questions">

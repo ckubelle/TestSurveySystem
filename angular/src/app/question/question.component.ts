@@ -48,6 +48,7 @@ export class QuestionComponent implements OnInit {
                 document.formTypeSelection,
                 [Validators.required],
               ],
+              creatorName: [document.testTitle, [Validators.required]],
               testCreator: document.testCreator,
               questions: this.fb.array([]),
             });
@@ -82,6 +83,7 @@ export class QuestionComponent implements OnInit {
             this.myForm = this.fb.group({
               testTitle: ['', [Validators.required]],
               formTypeSelection: ['', [Validators.required]],
+              creatorName: ['', [Validators.required]],
               testCreator: params.id,
               questions: this.fb.array([]),
             });
@@ -110,6 +112,11 @@ export class QuestionComponent implements OnInit {
   //Getter for the answer of each question
   get questionAnswer() {
     return this.myForm.get('questionAnswer');
+  }
+
+  //Getter for the answer of each question
+  get creatorName() {
+    return this.myForm.get('creatorName');
   }
 
   //function to add a question to the form (connects to the button)
