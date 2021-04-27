@@ -1,5 +1,5 @@
 <!--- Creates the form for the test/survey --->
-<form [formGroup]="myForm" *ngIf="myForm"  fxLayout= "column" fxLayoutAlign="center" id="padding"> 
+<form [formGroup]="myForm" *ngIf="!success && myForm"  fxLayout= "column" fxLayoutAlign="center" id="padding"> 
     
 <!--- This field saves the test name --->
     <mat-form-field>

@@ -150,6 +150,7 @@ export class QuestionComponent implements OnInit {
   //function to post test/survey information to Firebase
   async submitHandler() {
     this.loading = true;
+    this.success = true;
 
     const formValue = this.myForm.value;
 
@@ -159,7 +160,7 @@ export class QuestionComponent implements OnInit {
       } else {
         await this.afs.collection('tests').add(formValue);
       }
-      this.success = true;
+      
     } catch (err) {
       console.log(err);
     }
