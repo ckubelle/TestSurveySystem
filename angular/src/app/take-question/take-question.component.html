@@ -85,7 +85,7 @@
 
           <div *ngIf="question.value.questionType === 'ea'" class="essay">
             <mat-card-subtitle> Essay Answer </mat-card-subtitle>
-            <mat-form-field >
+            <mat-form-field [style.width.px] = 400>
               <input
                 matInput
                 placeholder ="Your Answer" 
