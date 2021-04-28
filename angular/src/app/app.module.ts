@@ -26,15 +26,15 @@ import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { TakeComponent } from './take/take.component';
 import { EditComponent } from './edit/edit.component';
-import { GradeComponent } from './grade/grade.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { QuestionComponent } from './question/question.component';
 import { TakeQuestionComponent } from './take-question/take-question.component';
-import { GradeQuestionComponent } from './grade-question/grade-question.component';
+import { ViewResultsComponent } from './view-results/view-results.component';
+import { SurveyResultsComponent } from './survey-results/survey-results.component';
 
 //import everything
 @NgModule({
-  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, GradeComponent, NotfoundComponent, QuestionComponent, TakeQuestionComponent, GradeQuestionComponent],
+  declarations: [AppComponent, TodoComponent, HomeComponent, CreateComponent, TakeComponent, EditComponent, NotfoundComponent, QuestionComponent, TakeQuestionComponent, ViewResultsComponent, SurveyResultsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

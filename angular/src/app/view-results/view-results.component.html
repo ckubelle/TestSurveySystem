@@ -1,8 +1,8 @@
 <!--- Title for edit surveys/test --->
 <div fxLayout="column" fxLayoutAlign="center">
-    <h1 id="title">Grade Your Tests/Surveys</h1>
+    <h1 id="title">View Your Survey Results</h1>
     <div>
-        <mat-grid-list
+      <mat-grid-list
         cols="3"
         style="
           font-size: large;
@@ -11,13 +11,13 @@
           text-align: center;
         "
       >
-        <mat-grid-tile style="margin-left:-30px">Name </mat-grid-tile>
-        <mat-grid-tile style="margin-left:-20px">Taker</mat-grid-tile>
-        <mat-grid-tile style="margin-left:-25px">Type</mat-grid-tile>
+        <mat-grid-tile style="margin-left:-23px">Name</mat-grid-tile>
+        <mat-grid-tile style="margin-left:-17px">Owner</mat-grid-tile>
+        <mat-grid-tile style="margin-left:-35px">Type</mat-grid-tile>
       </mat-grid-list>
   
       <div
-        *ngFor="let singleForm of myFormsArray"
+        *ngFor="let singleForm of surveyList"
         cols="3"
         class="tests-layout-custom"
       >
@@ -31,23 +31,14 @@
               </p>
             </mat-card-content>
           </mat-card>
-          
-          <button *ngIf= "singleForm.formTypeSelection === 'test'"
-            routerLink= "./{{singleForm.docId}}"
+          <button
+            routerLink="./{{ singleForm.testTitle }}"
             mat-raised-button
             color="primary"
             style="height: 40px; width: 10%; align-self: center"
           >
-            Grade
+            View
           </button>
-            <button *ngIf= "singleForm.formTypeSelection === 'survey'"
-              routerLink= "./{{singleForm.docId}}"
-              mat-raised-button
-              color="primary"
-              style="height: 40px; width: 10%; align-self: center"
-            >
-              View
-            </button>
         </div>
       </div>
     </div>
