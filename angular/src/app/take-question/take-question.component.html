@@ -24,7 +24,7 @@
       fxLayout="column"
       fxLayoutAlign="space-around center"
     >
-      <mat-card>
+      <mat-card style="width: 110%; padding: 20px">
         <div fxLayout="column" fxLayoutAlign="space-between start">
           <mat-card-content>
             <h3 class="mat-headline">Question #{{ i + 1 }}</h3>
@@ -85,10 +85,10 @@
 
           <div *ngIf="question.value.questionType === 'ea'" class="essay">
             <mat-card-subtitle> Essay Answer </mat-card-subtitle>
-            <mat-form-field>
+            <mat-form-field [style.width.px] = 400>
               <input
                 matInput
-                placeholder="Your Answer"
+                placeholder ="Your Answer" 
                 formControlName="submittedAnswer"
               />
             </mat-form-field>
@@ -129,42 +129,42 @@
 
           <div *ngIf="question.value.questionType === 'ra'">
             <mat-card-subtitle> Ranking </mat-card-subtitle>
-            <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
-              <mat-grid-tile>{{ question.value.rankAnswer1 }}</mat-grid-tile>
+            <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-rank">
               <mat-grid-tile
                 ><input
                   matInput
                   placeholder="Give rank"
                   formControlName="submittedRankAnswer1"
               /></mat-grid-tile>
-              <mat-grid-tile>{{ question.value.rankAnswer2 }}</mat-grid-tile>
+              <mat-grid-tile>{{ question.value.rankAnswer1 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
                   placeholder="Give rank"
                   formControlName="submittedRankAnswer2"
               /></mat-grid-tile>
-              <mat-grid-tile>{{ question.value.rankAnswer3 }}</mat-grid-tile>
+              <mat-grid-tile>{{ question.value.rankAnswer2 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
                   placeholder="Give rank"
                   formControlName="submittedRankAnswer3"
               /></mat-grid-tile>
-              <mat-grid-tile>{{ question.value.rankAnswer4 }}</mat-grid-tile>
+              <mat-grid-tile>{{ question.value.rankAnswer3 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
                   placeholder="Give rank"
                   formControlName="submittedRankAnswer4"
               /></mat-grid-tile>
-              <mat-grid-tile>{{ question.value.rankAnswer5 }}</mat-grid-tile>
+              <mat-grid-tile>{{ question.value.rankAnswer4 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
                   placeholder="Give rank"
                   formControlName="submittedRankAnswer5"
               /></mat-grid-tile>
+              <mat-grid-tile>{{ question.value.rankAnswer5 }}</mat-grid-tile>
             </mat-grid-list>
           </div>
 
@@ -177,7 +177,7 @@
               {{ question.value.rightanswer2 }}
             </mat-card-content>
 
-            <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
+            <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-match">
               <mat-grid-tile
                 ><input
                   matInput
