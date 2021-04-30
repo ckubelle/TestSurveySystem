@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-survey-results',
@@ -12,7 +13,8 @@ export class SurveyResultsComponent implements OnInit {
   formTaking: FormGroup;
   surveyTitle: string;
   mySurveysTakenArray: Array<FormGroup>;
-
+  //item$: Observable<any[]>;
+  item$: Observable<any[]>;
   loading = false;
   success = false;
 
@@ -21,19 +23,15 @@ export class SurveyResultsComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
-    this.route.params.subscribe((params) => {
-      this.surveyTitle = params.testTitle;
 
-      this.afs
-      .collection('testsTaken', (ref) => ref.where('testCreator', '==', params.id).where('testTitle', '==', this.surveyTitle))
-      .valueChanges({ idField: 'docId' })
-      .subscribe((formsList) => {
-        this.mySurveysTakenArray = formsList as Array<any>;
-      });
+   // this.item$ = afs.collection('testsTaken').valueChanges();
+      
+      this.item$ = afs.collection('testsTaken', ref => ref.where('creatorName', '==', 'Christian')).valueChanges();
+
+
+  }
 
   
-    });
-  }
   
 
   ngOnInit(): void {}
@@ -75,23 +73,6 @@ export class SurveyResultsComponent implements OnInit {
     this.success = true;
 
     const formValue = this.formTaking.value;
-
-    try {
-      this.afs
-        .doc<any>(`testsTaken/${this.docId}`)
-        .valueChanges()
-        .subscribe(async (document) => {
-          if (document) {
-            await this.afs
-              .doc<any>(`testsTaken/${this.docId}`)
-              .update(formValue);
-          } else {
-            await this.afs.collection('testsTaken').add(formValue);
-          }
-        });
-    } catch (err) {
-      console.log(err);
-    }
 
     this.loading = false;
   }
