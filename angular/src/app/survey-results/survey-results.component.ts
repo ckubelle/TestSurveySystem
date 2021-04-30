@@ -17,16 +17,21 @@ export class SurveyResultsComponent implements OnInit {
   item$: Observable<any[]>;
   loading = false;
   success = false;
+  id: string;
+  testTitle: string;
 
   constructor(
     private afs: AngularFirestore,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
-
+    this.route.params.subscribe((params) => {
+      this.id = params.id;
+      this.testTitle = params.testTitle;
+    });
    // this.item$ = afs.collection('testsTaken').valueChanges();
       
-      this.item$ = afs.collection('testsTaken', ref => ref.where('creatorName', '==', 'Christian')).valueChanges();
+      this.item$ = afs.collection('testsTaken', ref => ref.where('testCreator', '==', this.id).where('testTitle', '==', this.testTitle)).valueChanges();
 
 
   }
@@ -43,7 +48,7 @@ export class SurveyResultsComponent implements OnInit {
   }
 
   //Getter for the title of the test
-  get testTitle() {
+  get gettertestTitle() {
     return this.formTaking.get('testTitle');
   }
 
