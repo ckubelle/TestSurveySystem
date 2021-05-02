@@ -1,20 +1,26 @@
 <!--- Creates the form for the test/survey --->
   <!--- This field prints the test name --->
+  
+  <p>{{testArray[0].testTitle}}</p>
+  
+  <div *ngFor = "let question of testArray[0].questions; index as i">
 
-  <p *ngFor="let item of item$ | async">
+    <!-- This is where you print out the original format of the questions-->
+    {{question.questionTitle}}
 
-    {{item.testTitle}}
-    {{item.creatorName}}
-   <!-- {{item.questions[0].questionTitle}}-->
-
-
-   <li *ngFor= "let test of item.questions">
-    {{test.questionTitle}}
-    {{test.submittedAnswer}}
-  </li>
 
     
-    
-  </p>
+
+    <div *ngFor = "let item of testArray">
+      <!-- This is where we need to format the responses to the survey-->
+      {{item.questions[i].submittedAnswer}}
+      
+      
+  
+    </div>
+    <br>
+
+  </div>
+
 
 

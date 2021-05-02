@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SurveyResults } from './surveyresultshelper';
 
 @Component({
   selector: 'app-survey-results',
@@ -19,6 +20,7 @@ export class SurveyResultsComponent implements OnInit {
   success = false;
   id: string;
   testTitle: string;
+  testArray: Array<SurveyResults>;
 
   constructor(
     private afs: AngularFirestore,
@@ -32,7 +34,10 @@ export class SurveyResultsComponent implements OnInit {
    // this.item$ = afs.collection('testsTaken').valueChanges();
       
       this.item$ = afs.collection('testsTaken', ref => ref.where('testCreator', '==', this.id).where('testTitle', '==', this.testTitle)).valueChanges();
-
+      this.item$.subscribe(x => 
+        {this.testArray = x;
+          console.log(this.testArray);
+        });
 
   }
 
@@ -41,7 +46,6 @@ export class SurveyResultsComponent implements OnInit {
 
   ngOnInit(): void {}
   
-
   //Getter for all of the questions in a form
   get questionForms() {
     return this.formTaking.get('questions') as FormArray;
