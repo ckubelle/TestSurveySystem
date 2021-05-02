@@ -231,8 +231,18 @@
   <h1>Your score: {{ counter }} out of {{ total }}</h1>
 
   <div *ngIf="tobegraded">
-    <h3>*Some Answers yet to be graded*</h3>
-    ({{ essays }} essay question(s) & {{ shorts }} short response question(s))
+      <div *ngIf="essays != 0 && shorts != 0">
+        <h3>*Some Answers yet to be graded*<br/>
+        ({{ essays }} essay question(s) & {{ shorts }} short response question(s))</h3>
+      </div>
+      <div *ngIf="essays == 0">
+        <h3>*Some Answers yet to be graded*<br/>
+        ({{ shorts }} short response question(s))</h3>
+      </div>
+      <div *ngIf="shorts == 0">
+        <h3>*Some Answers yet to be graded*<br/>
+        ({{ essays }} essay question(s))</h3>
+      </div>
   </div>
 
   <button routerLink="" mat-raised-button color="primary">
