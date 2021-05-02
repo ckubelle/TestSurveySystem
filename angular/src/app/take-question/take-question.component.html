@@ -226,6 +226,11 @@
   fxLayout="column"
   fxLayoutAlign="end center"
 >
+<div *ngIf = "formTypeSelection.value === 'survey'">
+  <h1>Your Answers have been recorded!</h1>
+</div>
+
+<div *ngIf = "formTypeSelection.value === 'test'">
   <h1>Your Answers have been recorded!</h1>
 
   <h1>Your score: {{ counter }} out of {{ total }}</h1>
@@ -244,7 +249,7 @@
         ({{ essays }} essay question(s))</h3>
       </div>
   </div>
-
+</div>
   <button routerLink="" mat-raised-button color="primary">
     Return To Home
   </button>
