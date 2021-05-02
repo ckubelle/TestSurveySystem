@@ -81,6 +81,7 @@
                 formControlName="submittedAnswer"
               />
             </mat-form-field>
+            {{ tobegrade() }}
           </div>
 
           <div *ngIf="question.value.questionType === 'ea'" class="essay">
@@ -92,6 +93,7 @@
                 formControlName="submittedAnswer"
               />
             </mat-form-field>
+            {{ tobegrade() }}
           </div>
 
           <div *ngIf="question.value.questionType === 'mmc'">
@@ -133,35 +135,35 @@
               <mat-grid-tile
                 ><input
                   matInput
-                  placeholder="Give rank"
+                  placeholder="Rank #"
                   formControlName="submittedRankAnswer1"
               /></mat-grid-tile>
               <mat-grid-tile>{{ question.value.rankAnswer1 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
-                  placeholder="Give rank"
+                  placeholder="Rank #"
                   formControlName="submittedRankAnswer2"
               /></mat-grid-tile>
               <mat-grid-tile>{{ question.value.rankAnswer2 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
-                  placeholder="Give rank"
+                  placeholder="Rank #"
                   formControlName="submittedRankAnswer3"
               /></mat-grid-tile>
               <mat-grid-tile>{{ question.value.rankAnswer3 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
-                  placeholder="Give rank"
+                  placeholder="Rank #"
                   formControlName="submittedRankAnswer4"
               /></mat-grid-tile>
               <mat-grid-tile>{{ question.value.rankAnswer4 }}</mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
-                  placeholder="Give rank"
+                  placeholder="Rank #"
                   formControlName="submittedRankAnswer5"
               /></mat-grid-tile>
               <mat-grid-tile>{{ question.value.rankAnswer5 }}</mat-grid-tile>
@@ -171,19 +173,14 @@
           <div class="row" *ngIf="question.value.questionType === 'ma'">
             <mat-card-subtitle> Matching Question </mat-card-subtitle>
             <mat-card-content>
-              Items to match: {{ question.value.leftanswer1 }},
-              {{ question.value.leftanswer2 }},
+              Items to match: 
               {{ question.value.rightanswer1 }},
               {{ question.value.rightanswer2 }}
             </mat-card-content>
 
             <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-match">
               <mat-grid-tile
-                ><input
-                  matInput
-                  placeholder="Matching Answer 1 Left"
-                  formControlName="submittedLeftanswer1"
-              /></mat-grid-tile>
+                > {{ question.value.leftanswer1 }} </mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
@@ -191,11 +188,7 @@
                   formControlName="submittedRightanswer1"
               /></mat-grid-tile>
               <mat-grid-tile
-                ><input
-                  matInput
-                  placeholder="Matching Answer 2 Left"
-                  formControlName="submittedLeftanswer2"
-              /></mat-grid-tile>
+                > {{ question.value.leftanswer2 }} </mat-grid-tile>
               <mat-grid-tile
                 ><input
                   matInput
@@ -218,6 +211,7 @@
     mat-raised-button
     type="submit"
     (click)="submitHandler()"
+    (click)='score()'
     [disabled]="formTaking.invalid"
     color="primary"
   >
@@ -233,6 +227,14 @@
   fxLayoutAlign="end center"
 >
   <h1>Your Answers have been recorded!</h1>
+
+  <h1>Your score: {{ counter }} out of {{ total }}</h1>
+
+  <div *ngIf="tobegraded">
+    <h3>*Some Answers yet to be graded*</h3>
+    ({{ essays }} essay question(s) & {{ shorts }} short response question(s))
+  </div>
+
   <button routerLink="" mat-raised-button color="primary">
     Return To Home
   </button>

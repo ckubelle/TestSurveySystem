@@ -27,6 +27,15 @@ export class TakeQuestionComponent implements OnInit {
 
   loading = false;
   success = false;
+  counter = 0;
+  total = 0;
+  essays = 0;
+  shorts = 0;
+  tobegraded = false;
+
+  tobegrade(){
+    this.tobegraded = true;
+  }
 
   constructor(
     private afs: AngularFirestore,
@@ -93,6 +102,67 @@ export class TakeQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  mmccheck(_arr1, _arr2) {
+    if (
+      !Array.isArray(_arr1)
+      || !Array.isArray(_arr2)
+      ||  _arr1.length !== _arr2.length
+      ) {
+        return false;
+      }
+
+    // .concat() to not mutate arguments
+    const arr1 = _arr1.concat().sort();
+    const arr2 = _arr2.concat().sort();
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+         }
+    }
+
+    return true;
+}
+
+  score(){
+
+    for(let question of this.questionForms.value){
+      this.total++;
+      if(question.submittedAnswer==question.questionAnswer && (question.questionType=='mc' || question.questionType=='tf')){
+        this.counter++;
+        console.log(question.questionTitle);
+      }
+      else if (question.questionType=='mmc' ){
+          if(this.mmccheck(question.submittedAnswer, question.questionAnswer)){
+            this.counter++;
+            console.log(question.questionTitle);
+          }
+      }
+      else if (question.questionType=='ra' ){
+        if(question.rank1==question.submittedRankAnswer1 && 
+          question.rank2==question.submittedRankAnswer2 && 
+          question.rank3==question.submittedRankAnswer3 && 
+          question.rank4==question.submittedRankAnswer4 && question.rank5==question.submittedRankAnswer5){
+          this.counter++;
+          console.log(question.questionTitle);
+        }
+    }
+    else if (question.questionType=='ma' ){
+      if(question.rightanswer1 == question.submittedRightanswer1 &&
+        question.rightanswer2 == question.submittedRightanswer2){
+        this.counter++;
+        console.log(question.questionTitle);
+      }
+  }
+    else if (question.questionType=='ea' ){
+      this.essays++;
+    }
+    else if (question.questionType=='sa' ){
+      this.shorts++;
+    }
+  }
+}
 
   //Getter for all of the questions in a form
   get questionForms() {
