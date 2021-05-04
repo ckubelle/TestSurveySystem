@@ -1,61 +1,56 @@
-<!--- Creates the form for the test/survey --->
-<!--- This field prints the test name --->
-
 <h1>
   Your Survey Results for: <i>{{ testArray[0].testTitle }}</i>
 </h1>
 
-<div
-  *ngFor="let question of testArray[0].questions; index as i"
-  fxLayout="column"
-  fxLayoutAlign="space-around center"
->
+<div *ngFor="let question of testArray[0].questions; index as i" fxLayout="column" fxLayoutAlign="space-around center">
   <mat-card style="width: 110%; padding: 20px">
     <div fxLayout="column" fxLayoutAlign="space-between start">
       <!-- This is where you print out the original format of the questions-->
+
+      <!-- Header of the card -->
       <mat-card-content>
         <h3 class="mat-headline">Question #{{ i + 1 }}</h3>
       </mat-card-content>
       <mat-card-title>{{ question.questionTitle }}</mat-card-title>
 
-      <div
-        *ngIf="question.questionType == 'mc' || question.questionType == 'mmc'"
-      >
-        <mat-card-subtitle
-          >Options: {{ question.mcoption1 }}, {{ question.mcoption2 }},
-          {{ question.mcoption3 }}, {{ question.mcoption4 }}</mat-card-subtitle
-        >
+      <!-- Depending on the type of question, show the options the user had accordingly -->
+      <div *ngIf="question.questionType == 'mc' || question.questionType == 'mmc'">
+        <mat-card-subtitle>Options: {{ question.mcoption1 }}, {{ question.mcoption2 }},
+          {{ question.mcoption3 }}, {{ question.mcoption4 }}</mat-card-subtitle>
       </div>
 
+      <!-- Depending on the type of question, show the options the user had accordingly -->
       <div *ngIf="question.questionType == 'ra'">
-        <mat-card-subtitle
-          >Options: {{ question.rankAnswer1 }}, {{ question.rankAnswer2 }},
+        <mat-card-subtitle>Options: {{ question.rankAnswer1 }}, {{ question.rankAnswer2 }},
           {{ question.rankAnswer3 }},
-          {{ question.rankAnswer4 }}</mat-card-subtitle
-        >
+          {{ question.rankAnswer4 }}, {{question.rankAnswer5}}</mat-card-subtitle>
       </div>
 
+      <!-- Depending on the type of question, show the options the user had accordingly -->
       <div *ngIf="question.questionType == 'ma'">
-        <mat-card-subtitle
-          >Options: [{{ question.leftanswer1 }}, {{ question.leftanswer2 }}] [{{
-            question.rightanswer1
-          }}, {{ question.rightanswer2 }}]</mat-card-subtitle
-        >
+        <mat-card-subtitle>Options: [{{ question.leftanswer1 }}, {{ question.leftanswer2 }}] [{{
+          question.rightanswer1
+          }}, {{ question.rightanswer2 }}]</mat-card-subtitle>
       </div>
 
+      <!-- 'item' below is each form response to the survey -->
+      <!-- For example, the first time through 'item' is Christian's response form. Then its Kushal's submitted data, then its Spencer's-->
       <div *ngFor="let item of testArray" fxLayout="row">
-        <!-- This is where we need to format the responses to the survey-->
+
+        <!-- Print each user's name before their answer -->
         <b>{{ item.takerName }}: &nbsp;</b>
-        <div
-          *ngIf="
+
+        <!-- The rest of the logic below is handling how the answer to a question should be printed depending on the question type-->
+        <div *ngIf="
             question.questionType == 'sa' ||
             question.questionType == 'ea' ||
             question.questionType == 'tf'
-          "
-        >
+          ">
           {{ item.questions[i].submittedAnswer }}
         </div>
 
+        <!-- If the question is multiple choice, print out the string associated with their submittedAnswer-->
+        <!-- Example: A submittedAnswer of mc1 becomes 'France'-->
         <div *ngIf="question.questionType == 'mc'">
           <div *ngIf="item.questions[i].submittedAnswer == 'mc1'">
             {{ question.mcoption1 }}
@@ -71,14 +66,12 @@
           </div>
         </div>
 
+        <!-- The same as above however you need to iterate through each item in submittedAnswer because thats how MultipleMultipleChoice stores its value-->
         <div *ngIf="question.questionType == 'mmc'" fxLayout="row">
-          <div
-            *ngFor="
+          <div *ngFor="
               let eachAnswer of item.questions[i].submittedAnswer;
               index as j
-            "
-            fxLayout="row"
-          >
+            " fxLayout="row">
             <div *ngIf="eachAnswer == 'mmc1'">
               {{ question.mcoption1 }}
             </div>
@@ -91,10 +84,24 @@
             <div *ngIf="eachAnswer == 'mmc4'">
               {{ question.mcoption4 }}
             </div>
+            <!-- If there are more items left in the list, print out a comma and a space-->
             <p *ngIf="j + 1 < item.questions[i].submittedAnswer.length">
               ,&nbsp;
             </p>
           </div>
+        </div>
+
+        <!-- If the questionType is Ranking just print out all the rankings in the style of an array-->
+        <div *ngIf="question.questionType == 'ra'">
+          [{{ item.questions[i].submittedRankAnswer1 }}, {{ item.questions[i].submittedRankAnswer2 }}, {{
+          item.questions[i].submittedRankAnswer3 }}, {{ item.questions[i].submittedRankAnswer4 }}, {{
+          item.questions[i].submittedRankAnswer5 }}]
+        </div>
+
+        <!-- If the questionType is Matching print out "[<ItemToBeMatched> => <MatchSelectedByUser>]" -->
+        <div *ngIf="question.questionType == 'ma'">
+          [{{question.leftanswer1}} => {{item.questions[i].rightanswer1}}] &nbsp; [{{question.leftanswer2}} =>
+          {{item.questions[i].rightanswer2}}]
         </div>
       </div>
     </div>
