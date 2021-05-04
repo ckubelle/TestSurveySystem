@@ -260,6 +260,7 @@
 <!--- If the form has been submitted --->
 <div *ngIf="success" id = "extraSpace" fxLayout="column" fxLayoutAlign="end center">
 
-    <h1>Your Test/Survey Has Been Created!</h1>
+    <h1 *ngIf="!editing">Your Test/Survey Has Been Created!</h1>
+    <h1 *ngIf="editing">Your Test/Survey Has Been Edited!</h1>
     <button routerLink="" mat-raised-button color = primary>Return To Home</button>
 </div>  
