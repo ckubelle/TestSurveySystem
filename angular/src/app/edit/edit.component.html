@@ -1,19 +1,19 @@
 <!--- Title for edit surveys/test --->
 <div fxLayout="column" fxLayoutAlign="center">
   <h1 id="title">Edit Your Tests/Surveys</h1>
-  <div>
+  <div style = "width: 500px;">
     <mat-grid-list
       cols="3"
       style="
         font-size: large;
         margin-bottom: -50px;
-        width: 95%;
+        width: 100%;
         text-align: center;
       "
     >
-      <mat-grid-tile style="margin-left:-23px">Name </mat-grid-tile>
-      <mat-grid-tile style="margin-left:-17px">Owner</mat-grid-tile>
-      <mat-grid-tile style="margin-left:-35px">Type</mat-grid-tile>
+      <mat-grid-tile style="margin-left:-40px">Name</mat-grid-tile>
+      <mat-grid-tile style="margin-left:-25px">Owner</mat-grid-tile>
+      <mat-grid-tile style="margin-left:-20px">Type</mat-grid-tile>
     </mat-grid-list>
 
     <div
@@ -22,11 +22,11 @@
       class="tests-layout-custom"
     >
       <div fxLayout="row">
-        <mat-card style="margin: 10px; width: 90%; padding: 10px">
+        <mat-card style="margin: 10px; width: 100%; padding: 10px">
           <mat-card-content fxLayout="row" fxLayoutAlign="space-between">
-            <p style="width: 3vw; text-align: left">{{ singleForm.testTitle }}</p>
+            <p style="width: 3vw; text-align: center">{{ singleForm.testTitle }}</p>
             <p style="width: 3vw; text-align: center">{{ singleForm.creatorName }}</p>
-            <p style="width: 3vw; text-align: left">
+            <p style="width: 3vw; text-align: center">
               {{ singleForm.formTypeSelection }}
             </p>
           </mat-card-content>
