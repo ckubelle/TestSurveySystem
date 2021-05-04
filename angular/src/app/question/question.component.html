@@ -211,16 +211,16 @@
 
                     <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'survey'" >
                         <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer1"></mat-grid-tile>                            
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank2"></mat-grid-tile> 
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer2"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank3"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer3"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank4"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer4"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank5"></mat-grid-tile>
-                            <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer5"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1" readonly></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Option 1" formControlName="rankAnswer1"></mat-grid-tile>                            
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank2" readonly></mat-grid-tile> 
+                            <mat-grid-tile><input matInput placeholder="Option 2" formControlName="rankAnswer2"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank3" readonly></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Option 3" formControlName="rankAnswer3"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank4" readonly></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Option 4" formControlName="rankAnswer4"></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank5" readonly></mat-grid-tile>
+                            <mat-grid-tile><input matInput placeholder="Option 5" formControlName="rankAnswer5"></mat-grid-tile>
                              </mat-grid-list>
                     </div>
 
