@@ -16,8 +16,8 @@
     <mat-form-field>
         <mat-label> Are you creating a Test or Survey? </mat-label>
             <mat-select value="formType" formControlName="formTypeSelection"> 
-                <mat-option value = "test">Test</mat-option>
-                <mat-option value = "survey">Survey</mat-option>
+                <mat-option value = "Test">Test</mat-option>
+                <mat-option value = "Survey">Survey</mat-option>
             </mat-select>
         <mat-error *ngIf="formTypeSelection.pristine">
             Please Choose an Option: Test or Survey
@@ -65,7 +65,7 @@
                     </mat-form-field>
 
 <!--- If the user chooses multiple choice --->
-                    <div *ngIf= "question.value.questionType  === 'mc' && formTypeSelection.value === 'test'">
+                    <div *ngIf= "question.value.questionType  === 'mc' && formTypeSelection.value === 'Test'">
                     <mat-radio-group class = example-radio-group  aria-label="mcchoices" formControlName="questionAnswer">
                         <mat-radio-button class= example-radio-button color = primary value="mc1">
                             <mat-form-field>
@@ -91,7 +91,7 @@
                 </div>
 
 
-                <div *ngIf= "question.value.questionType  === 'mc' && formTypeSelection.value === 'survey'">
+                <div *ngIf= "question.value.questionType  === 'mc' && formTypeSelection.value === 'Survey'">
                     <mat-radio-group class = example-radio-group  aria-label="mcchoices" formControlName="questionAnswer">
                         <mat-radio-button class= example-radio-button color = primary value="mc1" disabled>
                             <mat-form-field>
@@ -117,21 +117,21 @@
                 </div>
 
 <!--- If the user chooses short answer --->
-                <div *ngIf= "question.value.questionType === 'sa' && formTypeSelection.value === 'test'" >
+                <div *ngIf= "question.value.questionType === 'sa' && formTypeSelection.value === 'Test'" >
                     <mat-form-field>
                         <input matInput placeholder="Short Answer" formControlName="questionAnswer">
                     </mat-form-field>
                 </div>
 
 <!--- If the user chooses essay answer --->
-                <div *ngIf= "question.value.questionType === 'ea' && formTypeSelection.value === 'test'"  class ="essay">
+                <div *ngIf= "question.value.questionType === 'ea' && formTypeSelection.value === 'Test'"  class ="essay">
                     <mat-form-field>
                         <input matInput placeholder="Essay Answer" formControlName="questionAnswer">
                     </mat-form-field>
                 </div>
 
 <!--- If the user chooses multiple multiple choice --->
-                <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'test'" >
+                <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'Test'" >
                     <mat-selection-list formControlName="questionAnswer" >
                     <mat-list-option color = primary value="mmc1" >
                         <mat-form-field>
@@ -156,7 +156,7 @@
                 </mat-selection-list>
                 </div>
 
-                <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'survey'" >
+                <div *ngIf= "question.value.questionType  === 'mmc' && formTypeSelection.value === 'Survey'" >
                     <mat-list formControlName="questionAnswer" >
                         <mat-list-item color = primary value="mmc1">
                             <mat-form-field>
@@ -182,7 +182,7 @@
                 </div>
 
 <!--- If the user chooses true or false --->
-                <div *ngIf= "question.value.questionType  === 'tf' && formTypeSelection.value === 'test'" >
+                <div *ngIf= "question.value.questionType  === 'tf' && formTypeSelection.value === 'Test'" >
                     <mat-radio-group  aria-label="True or False" formControlName = "questionAnswer">
                         <mat-radio-button color = primary value="True">
                         True
@@ -194,7 +194,7 @@
                 </div>
 
 <!--- If the user chooses ranking --->
-                    <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'test'" >
+                    <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'Test'" >
                         <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
                             <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1"></mat-grid-tile>
                             <mat-grid-tile><input matInput placeholder="Answer" formControlName="rankAnswer1"></mat-grid-tile>                            
@@ -209,7 +209,7 @@
                              </mat-grid-list>
                     </div>
 
-                    <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'survey'" >
+                    <div *ngIf= "question.value.questionType  === 'ra' && formTypeSelection.value === 'Survey'" >
                         <mat-grid-list cols="2" rowHeight="2:1" class="grid-layout-custom">
                             <mat-grid-tile><input matInput placeholder="Rank" formControlName="rank1" readonly></mat-grid-tile>
                             <mat-grid-tile><input matInput placeholder="Option 1" formControlName="rankAnswer1"></mat-grid-tile>                            

@@ -19,7 +19,7 @@ export class ViewResultsComponent implements OnInit {
 
   ngOnInit(): void {
     this.afs
-      .collection('tests', (ref) => ref.where('testCreator', '==', this.id).where('formTypeSelection', '==', 'survey'))
+      .collection('tests', (ref) => ref.where('testCreator', '==', this.id).where('formTypeSelection', '==', 'Survey'))
       .valueChanges({ idField: 'docId' })
       .subscribe((formsList) => {
         this.surveyList = formsList as Array<any>;
