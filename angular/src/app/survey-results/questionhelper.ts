@@ -1,0 +1,33 @@
+export class Question {
+  submittedAnswer: string;
+  submittedRankAnswer1: [];
+  submittedRankAnswer2: [];
+  submittedRankAnswer3: [];
+  submittedRankAnswer4: [];
+  submittedRankAnswer5: [];
+  submittedLeftanswer1: [];
+  submittedRightanswer1: [];
+  submittedLeftanswer2: [];
+  submittedRightanswer2: [];
+  questionTitle: [];
+  questionAnswer: [];
+  questionType: string;
+  mcoption1: [];
+  mcoption2: [];
+  mcoption3: [];
+  mcoption4: [];
+  rank1: [];
+  rank2: [];
+  rank3: [];
+  rank4: [];
+  rank5: [];
+  rankAnswer1: [];
+  rankAnswer2: [];
+  rankAnswer3: [];
+  rankAnswer4: [];
+  rankAnswer5: [];
+  leftanswer1: [];
+  rightanswer1: [];
+  leftanswer2: [];
+  rightanswer2: [];
+}
